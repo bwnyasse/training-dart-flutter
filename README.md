@@ -1,2 +1,4 @@
 # training-dart-flutter
-Dart &amp; Flutter Training resources 
+
+🇫🇷 
+Ce repo regroupe les sources codes utilisées dans mes formations, mes démos ou le blog [bwnyasse.net](https://bwnyasse.net/)
