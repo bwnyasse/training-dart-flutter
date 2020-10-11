@@ -2,66 +2,30 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class MyHomePage extends StatefulWidget {
+import 'hooks/animation.dart';
+
+class MyHomePage extends HookWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
-  ScrollController _scrollController;
-  AnimationController _hideFabAnimController;
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    _hideFabAnimController.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController = ScrollController();
-    _hideFabAnimController = AnimationController(
-      vsync: this,
-      duration: kThemeAnimationDuration,
-      value: 1, // initially visible
-    );
-
-    _scrollController.addListener(() {
-      switch (_scrollController.position.userScrollDirection) {
-        // Scrolling up - forward the animation (value goes to 1)
-        case ScrollDirection.forward:
-          _hideFabAnimController.forward();
-          break;
-        // Scrolling down - reverse the animation (value goes to 0)
-        case ScrollDirection.reverse:
-          _hideFabAnimController.reverse();
-          break;
-        // Idle - keep FAB visibility unchanged
-        case ScrollDirection.idle:
-          break;
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final hideFabAnimController = useAnimationController(
+        duration: kThemeAnimationDuration, initialValue: 1);
+    final scrollController =
+        useScrollControllerForAnimation(hideFabAnimController);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(title),
       ),
       //body:
       floatingActionButton: FadeTransition(
-        opacity: _hideFabAnimController,
+        opacity: hideFabAnimController,
         child: ScaleTransition(
-          scale: _hideFabAnimController,
+          scale: hideFabAnimController,
           child: FloatingActionButton.extended(
             label: const Text(' Floating Non utilisé'),
             onPressed: () {},
@@ -70,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage>
       ),
      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: ListView(
-        controller: _scrollController,
+        controller: scrollController,
         children: <Widget>[
           for (int i = 0; i < 5; i++) ListItem(index: i + 1),
         ],
