@@ -29,19 +29,11 @@ class Screen1 extends StatelessWidget {
         title: Text('Ecran N°1'),
       ),
       //TODO: Remplacer le body par une liste simple en conservant la navigation
-      body: Center(
-        child: ElevatedButton(
-          child: Text('via le push : Naviguer vers l\'écran N°2'),
-          //RESOLUTION: Implémenter la navigation vers un autre écran nommé
-          onPressed: () {
-            //RESOLUTION : Passer l'argument lors de la navigation
-            Navigator.pushNamed(
-              context,
-              '/second',
-              arguments: ScreenArguments('arg-title', 'arg-message'),
-            );
-          },
-        ),
+      body: ListView(
+        children: <Widget>[
+          //For in Collection
+          for (int i = 0; i < 5; i++) ListItem(index: i + 1),
+        ],
       ),
     );
   }
