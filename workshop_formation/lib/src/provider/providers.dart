@@ -17,7 +17,7 @@ class AppProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<ApiService>(create: (_) =>  ApiService()),
+        // TODO: En s'inspirant du TP sur Provider, fournit l'instance de ApiService()
       ],
       child: child,
     );

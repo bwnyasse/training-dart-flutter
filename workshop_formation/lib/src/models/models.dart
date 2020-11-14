@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+//TODO : Générer le fichier `flutter pub run build_runner build --delete-conflicting-outputs`
 part 'models.g.dart';
 
 // ------------------
@@ -10,10 +11,12 @@ part 'models.g.dart';
 class MoviesResponse {
   int page;
 
-  @JsonKey(name: 'total_results')
+  //TODO: Mettre à Jour la clé en s'inspirant de l'API
+  @JsonKey(name: 'A_RENSEIGNER')
   int totalResults;
 
-  @JsonKey(name: 'total_pages')
+  //TODO: Mettre à Jour la clé en s'inspirant de l'API
+  @JsonKey(name: 'A_RENSEIGNER')
   int totalPages;
 
   @JsonKey(nullable: false, name: 'results')

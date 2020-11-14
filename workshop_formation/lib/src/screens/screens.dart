@@ -40,7 +40,8 @@ class _Screen1State extends State<Screen1> {
   }
 
   _loadMovies() {
-    final apiService = context.read<ApiService>();
+    //TODO : Valoriser apiService
+    final apiService = null;
     MoviesResponse response = apiService.loadMovies();
     movies = response.movies;
   }
@@ -53,6 +54,7 @@ class _Screen1State extends State<Screen1> {
         title: Text(localizations.getValue(LocaleKey.screen1Title)),
       ),
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
+      //TODO: Comprendre la mise à jour de la liste pour afficher les movies
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
         itemCount: movies.length,

@@ -13,19 +13,12 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-    
-  # A mixture between dependency injection and state management, built with widgets for widgets.
-  provider: ^4.0.4
-  # Functions that support JSON code generation via the `json_serializable` package.
-  json_annotation: ^3.0.1
+  #TODO: provider et json_annotation
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  # Tools to write binaries that run builders.
-  build_runner: ^1.8.0
-  # Automatically generate code for converting to and from JSON by annotating Dart classes.
-  json_serializable: ^3.2.5
+  #TODO: Rajouter les dépendences pour build_runner et json_serializable
 
 flutter:
   uses-material-design: true
