@@ -23,9 +23,14 @@ class Screen1 extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           child: Text('via le push : Naviguer vers l\'écran N°2'),
-          //TODO: Implémenter la navigation vers un autre écran
+          //RESOLUTION: Implémenter la navigation vers un autre écran
           onPressed: () {
-            print("TODO: Implémenter la navigation vers un autre écran");
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Screen2(),
+              ),
+            );
           },
         ),
       ),
@@ -43,9 +48,9 @@ class Screen2 extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           child: Text('via le pop : retour à l\'écran précédent'),
-           //TODO: Implémenter la navigation retour 
+           //RESOLUTION: Implémenter la navigation retour 
           onPressed: () {
-            print("TODO: Implémenter la navigation retour ");
+            Navigator.pop(context);
           },
         ),
       ),
