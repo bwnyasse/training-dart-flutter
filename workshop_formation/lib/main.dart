@@ -6,13 +6,14 @@
 */
 
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(MaterialApp(
     title: 'Navigation Imperative',
-    home: Screen1(),
+    //TODO: configurer la navigation
   ));
 }
- 
+
 class Screen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -23,21 +24,16 @@ class Screen1 extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           child: Text('via le push : Naviguer vers l\'écran N°2'),
-          //RESOLUTION: Implémenter la navigation vers un autre écran
+          //TODO: Implémenter la navigation vers un autre écran nommé
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Screen2(),
-              ),
-            );
+            print("TODO: Implémenter la navigation vers un autre écran nommé");
           },
         ),
       ),
     );
   }
 }
- 
+
 class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -48,7 +44,7 @@ class Screen2 extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           child: Text('via le pop : retour à l\'écran précédent'),
-           //RESOLUTION: Implémenter la navigation retour 
+          //RESOLUTION: Implémenter la navigation retour
           onPressed: () {
             Navigator.pop(context);
           },
