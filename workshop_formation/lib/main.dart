@@ -23,24 +23,7 @@ void main() {
       '/': (context) => Screen1(),
       '/second': (context) => Screen2(),
     },
-    onGenerateRoute: (settings) {
-      //TODO: Faire une navigation intelligente
-
-      return MaterialPageRoute(builder: (context) => UnknownScreen());
-    },
   ));
-}
-
-class UnknownScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Text('404!'),
-      ),
-    );
-  }
 }
 
 class Screen1 extends StatelessWidget {
@@ -55,10 +38,11 @@ class Screen1 extends StatelessWidget {
           child: Text('via le push : Naviguer vers l\'écran N°2'),
           //RESOLUTION: Implémenter la navigation vers un autre écran nommé
           onPressed: () {
-            //TODO : Passer l'argument lors de la navigation
+            //RESOLUTION : Passer l'argument lors de la navigation
             Navigator.pushNamed(
               context,
               '/second',
+              arguments: ScreenArguments('arg-title', 'arg-message'),
             );
           },
         ),
@@ -70,8 +54,8 @@ class Screen1 extends StatelessWidget {
 class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //TODO: Comment récuperer l'argument dans l'écran ?
-    final ScreenArguments args = null;
+    //RESOLUTION: Comment récuperer l'argument dans l'écran ?
+    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text('Ecran N°2'),
@@ -80,10 +64,10 @@ class Screen2 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            //TODO: afficher le title de l'argument
-            Text('Arg title is ??'),
-            //TODO: afficher le message de l'argument
-            Text('Arg message is ??'),
+            //RESOLUTION: afficher le title de l'argument
+            Text('Arg title is ${args.title}'),
+            //RESOLUTION: afficher le message de l'argument
+            Text('Arg message is ${args.message}'),
             ElevatedButton(
               //RESOLUTION: Implémenter la navigation retour
               onPressed: () {
