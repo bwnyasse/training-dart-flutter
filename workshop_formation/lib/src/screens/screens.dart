@@ -28,11 +28,21 @@ class Screen1 extends StatelessWidget {
       appBar: AppBar(
         title: Text('Ecran N°1'),
       ),
-      //TODO: Remplacer le body par une liste simple en conservant la navigation
+      //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
       body: ListView(
         children: <Widget>[
           //For in Collection
-          for (int i = 0; i < 5; i++) ListItem(index: i + 1),
+          for (int i = 0; i < 5; i++)
+            ListItem(
+              index: i + 1,
+              onTapCallback: () {
+                Navigator.pushNamed(
+                  context,
+                  '/second',
+                  arguments: ScreenArguments('item', "${i+1}"),
+                );
+              },
+            ),
         ],
       ),
     );

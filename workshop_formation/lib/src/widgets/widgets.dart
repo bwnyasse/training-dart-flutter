@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 // ------------------
 class ListItem extends StatefulWidget {
   final int index;
-
-  ListItem({this.index}) {
+  final GestureTapCallback onTapCallback;
+  ListItem({this.index,this.onTapCallback}) {
     print('creating list item $index');
   }
 
@@ -23,13 +23,16 @@ class ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
     print('building list item ${widget.index}');
-    return Container(
-      color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-      height: 500,
-      child: Center(
-          child: Text(
-        widget.index.toString(),
-      )),
+    return GestureDetector(
+      onTap: widget.onTapCallback,
+      child: Container(
+        color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+        height: 500,
+        child: Center(
+            child: Text(
+          widget.index.toString(),
+        )),
+      ),
     );
   }
 }
