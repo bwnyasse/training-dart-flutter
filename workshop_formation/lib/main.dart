@@ -7,6 +7,13 @@
 
 import 'package:flutter/material.dart';
 
+class ScreenArguments {
+  final String title;
+  final String message;
+
+  ScreenArguments(this.title, this.message);
+}
+
 void main() {
   runApp(MaterialApp(
     title: 'Navigation Imperative',
@@ -31,7 +38,11 @@ class Screen1 extends StatelessWidget {
           child: Text('via le push : Naviguer vers l\'écran N°2'),
           //RESOLUTION: Implémenter la navigation vers un autre écran nommé
           onPressed: () {
-            Navigator.pushNamed(context, '/second');
+            //TODO : Passer l'argument lors de la navigation
+            Navigator.pushNamed(
+              context,
+              '/second',
+            );
           },
         ),
       ),
@@ -42,17 +53,28 @@ class Screen1 extends StatelessWidget {
 class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //TODO: Comment récuperer l'argument dans l'écran ?
+    final ScreenArguments args = null;
     return Scaffold(
       appBar: AppBar(
         title: Text('Ecran N°2'),
       ),
       body: Center(
-        child: ElevatedButton(
-          child: Text('via le pop : retour à l\'écran précédent'),
-          //RESOLUTION: Implémenter la navigation retour
-          onPressed: () {
-            Navigator.pop(context);
-          },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            //TODO: afficher le title de l'argument
+            Text('Arg title is ??'),
+            //TODO: afficher le message de l'argument
+            Text('Arg message is ??'),
+            ElevatedButton(
+              //RESOLUTION: Implémenter la navigation retour
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('via le pop : retour à l\'écran précédent'),
+            ),
+          ],
         ),
       ),
     );
