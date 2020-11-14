@@ -29,21 +29,21 @@ class Screen1 extends StatelessWidget {
         title: Text('Ecran N°1'),
       ),
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
-      body: ListView(
-        children: <Widget>[
-          //For in Collection
-          for (int i = 0; i < 5; i++)
-            ListItem(
-              index: i + 1,
-              onTapCallback: () {
-                Navigator.pushNamed(
-                  context,
-                  '/second',
-                  arguments: ScreenArguments('item', "${i+1}"),
-                );
-              },
-            ),
-        ],
+      body: ListView.builder(
+        padding: EdgeInsets.all(8.0),
+        itemExtent: 20.0,
+        itemBuilder: (BuildContext context, int i) {
+          return ListItem(
+            index: i + 1,
+            onTapCallback: () {
+              Navigator.pushNamed(
+                context,
+                '/second',
+                arguments: ScreenArguments('item', "${i + 1}"),
+              );
+            },
+          );
+        },
       ),
     );
   }
