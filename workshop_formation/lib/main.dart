@@ -10,7 +10,12 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: 'Navigation Imperative',
-    //TODO: configurer la navigation
+    //RESOLUTION: configurer la navigation
+    initialRoute: '/',
+    routes: {
+      '/': (context) => Screen1(),
+      '/second': (context) => Screen2(),
+    },
   ));
 }
 
@@ -24,9 +29,9 @@ class Screen1 extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           child: Text('via le push : Naviguer vers l\'écran N°2'),
-          //TODO: Implémenter la navigation vers un autre écran nommé
+          //RESOLUTION: Implémenter la navigation vers un autre écran nommé
           onPressed: () {
-            print("TODO: Implémenter la navigation vers un autre écran nommé");
+            Navigator.pushNamed(context, '/second');
           },
         ),
       ),
