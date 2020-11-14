@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workshop_formation/src/i18n/i18n.dart';
 
 import 'package:workshop_formation/src/models/models.dart';
 import 'package:workshop_formation/src/widgets/widgets.dart';
@@ -24,9 +25,10 @@ class UnknownScreen extends StatelessWidget {
 class Screen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ecran N°1'),
+        title: Text(localizations.getValue(LocaleKey.screen1Title)),
       ),
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
       body: ListView.builder(
@@ -55,26 +57,29 @@ class Screen1 extends StatelessWidget {
 class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AppLocalizations localizations = AppLocalizations.of(context);
     //RESOLUTION: Comment récuperer l'argument dans l'écran ?
     final ScreenArguments args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ecran N°2'),
+        title: Text(localizations.getValue(LocaleKey.screen2Title)),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             //RESOLUTION: afficher le title de l'argument
-            Text('Arg title is ${args.title}'),
+            Text('${localizations.getValue(LocaleKey.argTitle)} ${args.title}'),
             //RESOLUTION: afficher le message de l'argument
-            Text('Arg message is ${args.message}'),
+            Text(
+                '${localizations.getValue(LocaleKey.argMessage)} ${args.message}'),
             ElevatedButton(
               //RESOLUTION: Implémenter la navigation retour
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('via le pop : retour à l\'écran précédent'),
+              child:
+                  Text('${localizations.getValue(LocaleKey.popButtonTitle)}'),
             ),
           ],
         ),
