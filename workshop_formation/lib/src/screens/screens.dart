@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:workshop_formation/src/i18n/i18n.dart';
 
 import 'package:workshop_formation/src/models/models.dart';
+import 'package:workshop_formation/src/services/services.dart';
 import 'package:workshop_formation/src/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 // ------------------
 // UnknowScreen
@@ -22,7 +24,27 @@ class UnknownScreen extends StatelessWidget {
 // ------------------
 // SCREEN 1
 // ------------------
-class Screen1 extends StatelessWidget {
+
+class Screen1 extends StatefulWidget {
+  @override
+  _Screen1State createState() => _Screen1State();
+}
+
+class _Screen1State extends State<Screen1> {
+  List<Movie> movies = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMovies();
+  }
+
+  _loadMovies() {
+    final apiService = context.read<ApiService>();
+    MoviesResponse response = apiService.loadMovies();
+    movies = response.movies;
+  }
+
   @override
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context);
@@ -33,15 +55,18 @@ class Screen1 extends StatelessWidget {
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
-        itemExtent: 20.0,
-        itemBuilder: (BuildContext context, int i) {
+        itemCount: movies.length,
+        itemBuilder: (BuildContext context, int index) {
+          Movie movie = movies[index];
+          String originalTitle = movie.originalTitle;
+          String releaseDate = movie.releaseDate;
           return ListItem(
-            index: i + 1,
+            data: "$originalTitle - Date : $releaseDate",
             onTapCallback: () {
               Navigator.pushNamed(
                 context,
                 '/second',
-                arguments: ScreenArguments('item', "${i + 1}"),
+                arguments: ScreenArguments(originalTitle, releaseDate),
               );
             },
           );

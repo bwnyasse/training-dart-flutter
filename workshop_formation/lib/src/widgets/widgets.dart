@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 // LIST ITEM
 // ------------------
 class ListItem extends StatefulWidget {
-  final int index;
+  final String data;
   final GestureTapCallback onTapCallback;
-  ListItem({this.index,this.onTapCallback}) {
-    print('creating list item $index');
+  ListItem({this.data,this.onTapCallback}) {
+    print('creating list item $data');
   }
 
   @override
   ListItemState createState() {
-    print('creating list item state $index');
+    print('creating list item state $data');
     return ListItemState();
   }
 }
@@ -22,7 +22,7 @@ class ListItem extends StatefulWidget {
 class ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
-    print('building list item ${widget.index}');
+    print('building list item ${widget.data}');
     return GestureDetector(
       onTap: widget.onTapCallback,
       child: Container(
@@ -30,7 +30,7 @@ class ListItemState extends State<ListItem> {
         height: 500,
         child: Center(
             child: Text(
-          widget.index.toString(),
+          widget.data.toString(),
         )),
       ),
     );
