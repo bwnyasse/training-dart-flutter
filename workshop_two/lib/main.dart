@@ -104,8 +104,36 @@ class MyCheckbox extends StatefulWidget {
   _MyCheckboxState createState() => _MyCheckboxState();
 }
 
-//TODO: Controllons notre propre animation avec un SingleTickerProviderStateMixin
-class _MyCheckboxState extends State<MyCheckbox> {
+//RESOLUTION: Controllons notre propre animation avec un SingleTickerProviderStateMixin
+class _MyCheckboxState extends State<MyCheckbox>
+    with SingleTickerProviderStateMixin {
+  // Pour controller l'animation
+  AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(vsync: this, duration: widget.transitionDuration);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(covariant MyCheckbox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.checked && !oldWidget.checked) {
+      _controller.forward();
+    } else if (!widget.checked && oldWidget.checked) {
+      _controller.reverse();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     //RESOLUTION: Interagir avec la checkbox via l'API GestureDetector
@@ -127,10 +155,11 @@ class _MyCheckboxState extends State<MyCheckbox> {
               ? widget.activeBorderRadius
               : widget.inactiveBorderRadius),
         ),
-        //TODO: Utilisons l'objet ScaleTransition pour animer la scale de la checkbox
-        child: widget.checked
-            ? Icon(Icons.check)
-            : SizedBox(width: 24, height: 24),
+        //RESOLUTION: Utilisons l'objet ScaleTransition pour animer la scale de la checkbox
+        child: ScaleTransition(
+          scale: _controller,
+          child: Icon(Icons.check),
+        ),
       ),
     );
   }
