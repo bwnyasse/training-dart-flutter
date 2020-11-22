@@ -104,6 +104,7 @@ class MyCheckbox extends StatefulWidget {
   _MyCheckboxState createState() => _MyCheckboxState();
 }
 
+//TODO: Controllons notre propre animation avec un SingleTickerProviderStateMixin
 class _MyCheckboxState extends State<MyCheckbox> {
   @override
   Widget build(BuildContext context) {
@@ -126,6 +127,7 @@ class _MyCheckboxState extends State<MyCheckbox> {
               ? widget.activeBorderRadius
               : widget.inactiveBorderRadius),
         ),
+        //TODO: Utilisons l'objet ScaleTransition pour animer la scale de la checkbox
         child: widget.checked
             ? Icon(Icons.check)
             : SizedBox(width: 24, height: 24),
