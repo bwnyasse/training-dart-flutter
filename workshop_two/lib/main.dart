@@ -76,15 +76,23 @@ class MyCheckbox extends StatefulWidget {
 }
 
 class _MyCheckboxState extends State<MyCheckbox> {
+  bool _checked = false;
   @override
   Widget build(BuildContext context) {
-    //TODO: Interagir avec la checkbox via l'API GestureDetector
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(),
-        borderRadius: BorderRadius.circular(4),
+    //RESOLUTION: Interagir avec la checkbox via l'API GestureDetector
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _checked = !_checked;
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: _checked ? Icon(Icons.check) : SizedBox(width: 24, height: 24),
       ),
-      child: SizedBox(width: 24, height: 24),
     );
   }
 }
