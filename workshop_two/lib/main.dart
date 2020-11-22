@@ -113,13 +113,18 @@ class _MyCheckboxState extends State<MyCheckbox> {
         //RESOLUTION: le bool checked est maintenant géré par le noeud parent, comment gérer le OnTap ?
         widget.onCheckBoxChanged(!widget.checked);
       },
-      //TODO: Animer la checkbox avec la durée de transition fournie
-      child: Container(
+      //RESOLUTION: Animer la checkbox avec la durée de transition fournie
+      child: AnimatedContainer(
+        duration: widget.transitionDuration,
         decoration: BoxDecoration(
-          //TODO: Mettre à jour la couleur de la bordure en fonction de son état
-          border: Border.all(),
-          //TODO: Mettre à jour le radius en fonction de son état
-          borderRadius: BorderRadius.circular(4),
+          //RESOLUTION: Mettre à jour la couleur de la bordure en fonction de son état
+          border: Border.all(
+            color: widget.checked ? widget.activeColor : widget.inactiveColor,
+          ),
+          //RESOLUTION: Mettre à jour le radius en fonction de son état
+          borderRadius: BorderRadius.circular(widget.checked
+              ? widget.activeBorderRadius
+              : widget.inactiveBorderRadius),
         ),
         child: widget.checked
             ? Icon(Icons.check)
