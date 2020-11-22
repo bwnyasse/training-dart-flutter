@@ -40,7 +40,25 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              //TODO : Créer une scène avec des champs et une checkbox
+              //RESOLUTION : Créer une scène avec des champs et une checkbox
+              TextField(decoration: InputDecoration(hintText: 'Username')),
+              TextField(decoration: InputDecoration(hintText: 'Password')),
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  // Ce container nous permet de construire une checkbox from scratch
+                  // sans utiliser le composant natif
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: SizedBox(width: 24, height: 24),
+                  ),
+                  SizedBox(width: 8),
+                  Text('Remember Me'),
+                ],
+              )
             ],
           ),
         ),
