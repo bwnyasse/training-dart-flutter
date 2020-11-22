@@ -78,6 +78,7 @@ class MyCheckbox extends StatefulWidget {
 class _MyCheckboxState extends State<MyCheckbox> {
   @override
   Widget build(BuildContext context) {
+    //TODO: Interagir avec la checkbox via l'API GestureDetector
     return Container(
       decoration: BoxDecoration(
         border: Border.all(),
