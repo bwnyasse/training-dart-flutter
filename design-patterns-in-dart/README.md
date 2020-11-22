@@ -9,7 +9,7 @@ les [23 design patterns du Gang of Four](https://en.wikipedia.org/wiki/Design_Pa
 
 ### Les patterns de comportement
 
-- [x] Chain of Responsibility - voir la [Demo](https://dartpad.dev/abd395795b3daf89594410ae7a51e66f)
+- [x] <b>Chain of Responsibility</b> - voir la <a href="https://dartpad.dev/abd395795b3daf89594410ae7a51e66f" target="_blank">Demo</a>
 
 Le pattern **Chain of Responsability** permet d'éviter de coupler l'émetteur d'une requête à son récepteur en permettant à plus d'un object d'y répondre.
 
@@ -19,7 +19,7 @@ défauts.
 
 Ce pattern prône le couplage faible.
 
-- [x] Command - voir la [demo](https://dartpad.dev/6a3994da1e85d0ea5d40031894fdc59b)
+- [x] <b>Command</b> - voir la <a href="https://dartpad.dev/6a3994da1e85d0ea5d40031894fdc59b" target="_blank">Demo</a>
 
 L'objectif du pattern **Command**  est d'encapsuler une requête dans un objet. 
 
