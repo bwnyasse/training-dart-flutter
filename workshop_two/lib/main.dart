@@ -78,11 +78,26 @@ class _MyHomePageState extends State<MyHomePage> {
 class MyCheckbox extends StatefulWidget {
   final bool checked;
   final void Function(bool checked) onCheckBoxChanged;
-
+  final Duration transitionDuration;
+  final Color activeColor;
+  final Color inactiveColor;
+  final double activeBorderRadius;
+  final double inactiveBorderRadius;
+  // Ajout des éléments suivants dans la construction de la checkbox:
+  // - durée de transition
+  // - color si active
+  // - color si inactive
+  // - bordure radius si active
+  // - bordure radius si inactive
   const MyCheckbox({
     Key key,
     @required this.checked,
     @required this.onCheckBoxChanged,
+    this.transitionDuration = const Duration(milliseconds: 500),
+    this.activeColor = Colors.red,
+    this.inactiveColor = Colors.grey,
+    this.activeBorderRadius = 10.0,
+    this.inactiveBorderRadius = 4.0,
   }) : super(key: key);
 
   @override
@@ -98,9 +113,12 @@ class _MyCheckboxState extends State<MyCheckbox> {
         //RESOLUTION: le bool checked est maintenant géré par le noeud parent, comment gérer le OnTap ?
         widget.onCheckBoxChanged(!widget.checked);
       },
+      //TODO: Animer la checkbox avec la durée de transition fournie
       child: Container(
         decoration: BoxDecoration(
+          //TODO: Mettre à jour la couleur de la bordure en fonction de son état
           border: Border.all(),
+          //TODO: Mettre à jour le radius en fonction de son état
           borderRadius: BorderRadius.circular(4),
         ),
         child: widget.checked
