@@ -28,6 +28,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _checked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   // Ce container nous permet de construire une checkbox from scratch
                   // sans utiliser le composant natif
                   // RESOLUTION: Transformer ce container en un StatefulWidget nommé MyCheckBox
-                  MyCheckbox(),
+                  MyCheckbox(checked: _checked),
                   SizedBox(width: 8),
                   Text('Remember Me'),
                 ],
@@ -67,31 +69,30 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class MyCheckbox extends StatefulWidget {
-  const MyCheckbox({
-    Key key,
-  }) : super(key: key);
+  final bool checked;
+
+  const MyCheckbox({Key key, this.checked}) : super(key: key);
 
   @override
   _MyCheckboxState createState() => _MyCheckboxState();
 }
 
 class _MyCheckboxState extends State<MyCheckbox> {
-  bool _checked = false;
   @override
   Widget build(BuildContext context) {
     //RESOLUTION: Interagir avec la checkbox via l'API GestureDetector
     return GestureDetector(
       onTap: () {
-        setState(() {
-          _checked = !_checked;
-        });
+        //TODO: le bool checked est maintenant géré par le noeud parent, comment gérer le OnTap ?
       },
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(),
           borderRadius: BorderRadius.circular(4),
         ),
-        child: _checked ? Icon(Icons.check) : SizedBox(width: 24, height: 24),
+        child: widget.checked
+            ? Icon(Icons.check)
+            : SizedBox(width: 24, height: 24),
       ),
     );
   }
