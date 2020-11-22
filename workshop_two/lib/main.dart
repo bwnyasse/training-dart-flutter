@@ -48,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   // Ce container nous permet de construire une checkbox from scratch
                   // sans utiliser le composant natif
+                  // TODO: Transformer ce container en un StatefulWidget nommé MyCheckBox
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(),
