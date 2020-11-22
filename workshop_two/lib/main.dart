@@ -48,14 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   // Ce container nous permet de construire une checkbox from scratch
                   // sans utiliser le composant natif
-                  // TODO: Transformer ce container en un StatefulWidget nommé MyCheckBox
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: SizedBox(width: 24, height: 24),
-                  ),
+                  // RESOLUTION: Transformer ce container en un StatefulWidget nommé MyCheckBox
+                  MyCheckbox(),
                   SizedBox(width: 8),
                   Text('Remember Me'),
                 ],
@@ -68,6 +62,28 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () => print('Nothing To Do for the moment'),
         child: Icon(Icons.check),
       ),
+    );
+  }
+}
+
+class MyCheckbox extends StatefulWidget {
+  const MyCheckbox({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  _MyCheckboxState createState() => _MyCheckboxState();
+}
+
+class _MyCheckboxState extends State<MyCheckbox> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: SizedBox(width: 24, height: 24),
     );
   }
 }
