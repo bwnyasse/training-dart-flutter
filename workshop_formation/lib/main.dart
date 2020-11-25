@@ -17,23 +17,8 @@ class ScreenArguments {
 void main() {
   runApp(MaterialApp(
     title: 'Navigation Imperative',
-    //RESOLUTION: configurer la navigation
-    initialRoute: '/',
-    routes: {
-      '/': (context) => Screen1(),
-      '/second': (context) => Screen2(),
-    },
     onGenerateRoute: (settings) {
-      //RESOLUTION: Faire une navigation intelligente
-      if (settings.name == '/') {
-        return MaterialPageRoute(builder: (context) => Screen1());
-      } else if (settings.name == '/second') {
-        return MaterialPageRoute(
-          builder: (context) {
-            return Screen2();
-          },
-        );
-      }
+      //TODO: Faire une navigation intelligente
       return MaterialPageRoute(builder: (context) => UnknownScreen());
     },
   ));
@@ -77,10 +62,12 @@ class Screen1 extends StatelessWidget {
 }
 
 class Screen2 extends StatelessWidget {
+  final ScreenArguments args;
+
+  const Screen2({Key key, this.args}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    //RESOLUTION: Comment récuperer l'argument dans l'écran ?
-    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text('Ecran N°2'),
