@@ -18,7 +18,18 @@ void main() {
   runApp(MaterialApp(
     title: 'Navigation Imperative',
     onGenerateRoute: (settings) {
-      //TODO: Faire une navigation intelligente
+      //RESOLUTION: Faire une navigation intelligente
+      if (settings.name == '/') {
+        return MaterialPageRoute(builder: (context) => Screen1());
+      } else if (settings.name == '/second') {
+        return MaterialPageRoute(
+          builder: (context) {
+            return Screen2(
+              args: settings.arguments,
+            );
+          },
+        );
+      }
       return MaterialPageRoute(builder: (context) => UnknownScreen());
     },
   ));
