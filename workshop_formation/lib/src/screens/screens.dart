@@ -64,6 +64,9 @@ class _Screen1State extends State<Screen1> {
           String originalTitle = movie.originalTitle;
           String releaseDate = movie.releaseDate;
           return ListItem(
+            imgUrl: movie.posterPath == null
+                ? 'https://via.placeholder.com/300'
+                : 'http://image.tmdb.org/t/p/w185/${movie.posterPath}',
             data: "$originalTitle - Date : $releaseDate",
             onTapCallback: () {
               Navigator.pushNamed(
