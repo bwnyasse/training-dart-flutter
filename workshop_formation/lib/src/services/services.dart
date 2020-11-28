@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:workshop_formation/src/models/models.dart';
+import 'package:http/http.dart' as http;
 
 Map<String, dynamic> _mockJson() => {
       "page": 1,
@@ -24,5 +27,6 @@ class ApiService {
   //
   // Load Movies from Server
   //
+  // TODO : Charger les films à afficher depuis l'API MoviesDB et renvoyer un Future<MoviesResponse>
   MoviesResponse loadMovies() => MoviesResponse.fromJson(_mockJson());
 }

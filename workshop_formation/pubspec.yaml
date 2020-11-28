@@ -18,7 +18,10 @@ dependencies:
   provider: ^4.0.4
   # Functions that support JSON code generation via the `json_serializable` package.
   json_annotation: ^3.0.1
+  # A composable, Future-based library for making HTTP requests.
+  http: ^0.12.2
 
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
