@@ -39,11 +39,13 @@ class _Screen1State extends State<Screen1> {
     _loadMovies();
   }
 
-  _loadMovies() {
-    // TODO : Charger les films à afficher depuis l'API MoviesDB
+  _loadMovies() async {
+    // RESOLUTION : Charger les films à afficher depuis l'API MoviesDB
     final apiService = context.read<ApiService>();
-    MoviesResponse response = apiService.loadMovies();
-    movies = response.movies;
+    MoviesResponse response = await apiService.loadMovies();
+    setState(() {
+      movies = response.movies;
+    });
   }
 
   @override
