@@ -34,7 +34,8 @@ class ListItemState extends State<ListItem> {
           padding: const EdgeInsets.all(50.0),
           child: Column(
             children: [
-              //TODO: Afficher l'image qui est dans la variable imgUrl
+              //RESOLUTION: Afficher l'image qui est dans la variable imgUrl
+              Image.network(widget.imgUrl),
               Text(
                 widget.data.toString(),
                 style: TextStyle(
