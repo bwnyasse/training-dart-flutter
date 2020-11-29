@@ -48,6 +48,33 @@ class _Screen1State extends State<Screen1> {
     });
   }
 
+  // Drawer is a ListView with entries
+  Widget _buildDrawer(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          DrawerHeader(
+              child: Container(
+            child: Image.asset(
+              "assets/workshop-image.png",
+              fit: BoxFit.cover,
+            ),
+          )),
+          const ListTile(
+            leading: const Icon(Icons.assessment),
+            title: const Text('Example Menu 1'),
+            selected: true,
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Example Menu 2'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context);
@@ -55,6 +82,7 @@ class _Screen1State extends State<Screen1> {
       appBar: AppBar(
         title: Text(localizations.getValue(LocaleKey.screen1Title)),
       ),
+      drawer: _buildDrawer(context),
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
