@@ -48,6 +48,7 @@ class _Screen1State extends State<Screen1> {
     });
   }
 
+  //RESOLUTION: Méthode qui construit votre drawer
   // Drawer is a ListView with entries
   Widget _buildDrawer(BuildContext context) {
     return Drawer(
@@ -82,7 +83,8 @@ class _Screen1State extends State<Screen1> {
       appBar: AppBar(
         title: Text(localizations.getValue(LocaleKey.screen1Title)),
       ),
-      drawer: _buildDrawer(context),
+      // RESOLUTION: Afficher le drawer
+       drawer: _buildDrawer(context),
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
