@@ -20,7 +20,8 @@ dependencies:
   json_annotation: ^3.0.1
   # A composable, Future-based library for making HTTP requests.
   http: ^0.12.2
-
+  # A Flutter plugin to share content from your Flutter app via the platform's share dialog.
+  share: ^0.6.5+4
 
 dev_dependencies:
   flutter_test:

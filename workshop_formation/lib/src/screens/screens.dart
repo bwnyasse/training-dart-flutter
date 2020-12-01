@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:workshop_formation/src/i18n/i18n.dart';
 
 import 'package:workshop_formation/src/models/models.dart';
@@ -82,9 +83,18 @@ class _Screen1State extends State<Screen1> {
     return Scaffold(
       appBar: AppBar(
         title: Text(localizations.getValue(LocaleKey.screen1Title)),
+        // RESOLUTION: Utilisation du plugin share
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.share),
+            onPressed: () {
+              Share.share('Hello from my workshop');
+            },
+          )
+        ],
       ),
       // RESOLUTION: Afficher le drawer
-       drawer: _buildDrawer(context),
+      drawer: _buildDrawer(context),
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
