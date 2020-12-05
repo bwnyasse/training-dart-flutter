@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mybatterylevel.iml" filepath="$PROJECT_DIR$/mybatterylevel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/mybatterylevel_android.iml" filepath="$PROJECT_DIR$/android/mybatterylevel_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/mybatterylevel_example_android.iml" filepath="$PROJECT_DIR$/example/android/mybatterylevel_example_android.iml" />
+    </modules>
+  </component>
+</project>

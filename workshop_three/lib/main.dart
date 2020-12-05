@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:mybatterylevel/mybatterylevel.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,8 +33,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Platform
-  static const platform = const MethodChannel('samples.flutter.dev/battery');
 
   // Get battery level.
   String _batteryLevelMsg = 'Unknown battery level.';
@@ -43,13 +42,19 @@ class _MyHomePageState extends State<MyHomePage> {
     String msg;
     double value;
     try {
-      final int result = await platform.invokeMethod('getBatteryLevel');
+
+      final int result = await Mybatterylevel.batteryLevel;
       value = result.toDouble() / 100;
       msg = 'Battery level at $result % .';
     } on PlatformException catch (e) {
       msg = "Failed to get battery level: '${e.message}'.";
       value = 0;
     }
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    if (!mounted) return;
 
     setState(() {
       _batteryLevelMsg = msg;

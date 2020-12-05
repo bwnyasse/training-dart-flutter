@@ -81,13 +81,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0-nullsafety.3"
-  mybatterylevel:
-    dependency: "direct main"
-    description:
-      path: "../workshop_four/mybatterylevel"
-      relative: true
-    source: path
-    version: "0.0.1"
   path:
     dependency: transitive
     description:
@@ -95,15 +88,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0-nullsafety.1"
-  percent_indicator:
-    dependency: "direct main"
-    description:
-      name: percent_indicator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.8"
   pigeon:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: pigeon
       url: "https://pub.dartlang.org"

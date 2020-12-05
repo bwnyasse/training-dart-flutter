@@ -24,6 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   percent_indicator: "^2.1.7+2"
+  mybatterylevel:
+    path: ../workshop_four/mybatterylevel/
 
 dev_dependencies:
   flutter_test:
