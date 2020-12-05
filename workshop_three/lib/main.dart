@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,12 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Battery Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Battery Demo'),
     );
   }
 }
@@ -35,19 +36,24 @@ class _MyHomePageState extends State<MyHomePage> {
   static const platform = const MethodChannel('samples.flutter.dev/battery');
 
   // Get battery level.
-  String _batteryLevel = 'Unknown battery level.';
+  String _batteryLevelMsg = 'Unknown battery level.';
+  double _percent = 0;
 
   Future<void> _getBatteryLevel() async {
-    String batteryLevel;
+    String msg;
+    double value;
     try {
       final int result = await platform.invokeMethod('getBatteryLevel');
-      batteryLevel = 'Battery level at $result % .';
+      value = result.toDouble() / 100;
+      msg = 'Battery level at $result % .';
     } on PlatformException catch (e) {
-      batteryLevel = "Failed to get battery level: '${e.message}'.";
+      msg = "Failed to get battery level: '${e.message}'.";
+      value = 0;
     }
 
     setState(() {
-      _batteryLevel = batteryLevel;
+      _batteryLevelMsg = msg;
+      _percent = value;
     });
   }
 
@@ -58,11 +64,17 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            new CircularPercentIndicator(
+              radius: 200.0,
+              lineWidth: 10.0,
+              percent: _percent,
+              center: new Text(_batteryLevelMsg),
+              progressColor: _percent > 0.5 ? Colors.green : Colors.red,
+            ),
             ElevatedButton(
               child: Text('Get Battery Level'),
               onPressed: _getBatteryLevel,
             ),
-            Text(_batteryLevel),
           ],
         ),
       ),
