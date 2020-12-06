@@ -16,4 +16,9 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+
+  testWidgets('Golden test', (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());
+    await expectLater(find.byType(MyApp), matchesGoldenFile('main.png'));
+  });
 }
