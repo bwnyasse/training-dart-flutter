@@ -34,14 +34,30 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Platform The client and host sides of a channel are connected
   // through a channel name passed in the channel constructor
-  //TODO: Récuperer le channel
+  //RESOLUTION: Récuperer le channel
+  static const platform = const MethodChannel('samples.flutter.dev/battery');
 
   // Get battery level.
   String _batteryLevelMsg = 'Unknown battery level.';
   double _percent = 0;
 
   Future<void> _getBatteryLevel() async {
-    //TODO: Méthode qui va récupérer le niveau de la batterie en faisant appel via la méthode 'invokeMethod'
+    //RESOLUTION: Méthode qui va récupérer le niveau de la batterie en faisant appel via la méthode 'invokeMethod'
+    String msg;
+    double value;
+    try {
+      final int result = await platform.invokeMethod('getBatteryLevel');
+      value = result.toDouble() / 100;
+      msg = 'Battery level at $result % .';
+    } on PlatformException catch (e) {
+      msg = "Failed to get battery level: '${e.message}'.";
+      value = 0;
+    }
+
+    setState(() {
+      _batteryLevelMsg = msg;
+      _percent = value;
+    });
   }
 
   @override
