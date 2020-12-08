@@ -12,11 +12,7 @@ class BooksApp extends StatefulWidget {
 class _BooksAppState extends State<BooksApp> {
   Book _selectedBook;
   bool show404 = false;
-  List<Book> books = [
-    Book('Stranger in a Strange Land', 'Robert A. Heinlein'),
-    Book('Foundation', 'Isaac Asimov'),
-    Book('Fahrenheit 451', 'Ray Bradbury'),
-  ];
+  final List<Book> books = availableBooks();
 
   void _handleBookTapped(Book book) {
     setState(() {
@@ -29,33 +25,9 @@ class _BooksAppState extends State<BooksApp> {
     return MaterialApp(
       title: 'Books App - Navigation 2.0',
       home: Navigator(
-        pages: [
-          MaterialPage(
-            key: ValueKey('Screen1'),
-            child: Screen1(
-              books: books,
-              onTapped: _handleBookTapped,
-            ),
-          ),
-          if (show404)
-            MaterialPage(key: ValueKey('UnknownPage'), child: UnknownScreen())
-          else if (_selectedBook != null)
-            MaterialPage(
-                key: ValueKey('Screen2$_selectedBook'),
-                child: Screen2(book: _selectedBook))
-        ],
-        onPopPage: (route, result) {
-          if (!route.didPop(result)) {
-            return false;
-          }
+        //TODO-1: Fournit la liste des pages au Navigator en renseignant l'attribut pages
 
-          // Update the list of pages by setting _selectedBook to null
-          setState(() {
-            _selectedBook = null;
-          });
-
-          return true;
-        },
+        //TODO-2 : Comment faire le pop des pages ? 
       ),
     );
   }

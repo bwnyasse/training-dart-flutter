@@ -19,6 +19,7 @@ class Screen2 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             if (book != null) ...[
+              Image.network(book.imageLink),
               Text(book.title, style: Theme.of(context).textTheme.headline6),
               Text(book.author, style: Theme.of(context).textTheme.subtitle1),
             ],
