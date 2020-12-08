@@ -25,9 +25,36 @@ class _BooksAppState extends State<BooksApp> {
     return MaterialApp(
       title: 'Books App - Navigation 2.0',
       home: Navigator(
-        //TODO-1: Fournit la liste des pages au Navigator en renseignant l'attribut pages
+        //RESOLUTION: Fournit la liste des pages au Navigator en renseignant l'attribut pages
+        pages: [
+          MaterialPage(
+            key: ValueKey('Screen1'),
+            child: Screen1(
+              books: books,
+              onTapped: _handleBookTapped,
+            ),
+          ),
+          if (show404)
+            MaterialPage(key: ValueKey('UnknownPage'), child: UnknownScreen())
+          else if (_selectedBook != null)
+            MaterialPage(
+                key: ValueKey('Screen2$_selectedBook'),
+                child: Screen2(book: _selectedBook))
+        ],
 
-        //TODO-2 : Comment faire le pop des pages ? 
+        //RESOLUTION : Comment faire le pop des pages ?
+        onPopPage: (route, result) {
+          if (!route.didPop(result)) {
+            return false;
+          }
+
+          // Update the list of pages by setting _selectedBook to null
+          setState(() {
+            _selectedBook = null;
+          });
+
+          return true;
+        },
       ),
     );
   }
