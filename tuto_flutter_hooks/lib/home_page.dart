@@ -2,7 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+//TODO: Valider que cet import est correct suite à l'ajout de la librairie
+import 'package:flutter_hooks/flutter_hooks.dart';
 
+//TODO: A la place d'étendre un StatefulWidget , essayong d'utiliser l'API HookWidget
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
