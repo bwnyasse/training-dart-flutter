@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tuto_flutter_bloc/src/blocs/blocs.dart';
 import 'package:tuto_flutter_bloc/src/services/impl/api_service.dart';
 import 'package:tuto_flutter_bloc/src/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -33,9 +35,27 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       drawer: _buildDrawer(),
-      body: LoadingWidget(
-        message: "L'application est dans un état inconnu ...",
-      ),
+      body: BlocBuilder<AppBloc, AppState>(builder: (context, state) {
+        // Is Loading
+        if (state is AppLoading) {
+          return LoadingWidget(
+            message: "Données en cours de chargement ...",
+          );
+        }
+
+        // Is Loaded
+        if (state is AppLoaded) {
+          return LoadedWidget();
+        }
+
+        // State error
+        if (state is AppError) {
+          return ErrorWidget();
+        }
+        return LoadingWidget(
+          message: "L'application est dans un état inconnu ...",
+        );
+      }),
     );
   }
 }
