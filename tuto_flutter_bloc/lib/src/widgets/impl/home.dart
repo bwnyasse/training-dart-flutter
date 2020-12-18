@@ -24,6 +24,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+            RaisedButton(
+              child: Text('Demo: Send LoadEvent'),
+              onPressed: () {
+                BlocProvider.of<AppBloc>(context).add(LoadEvent());
+              },
+            ),
+            RaisedButton(
+              child: Text('Demo: Send ErrorEvent'),
+              onPressed: () {
+                BlocProvider.of<AppBloc>(context).add(ErrorEvent());
+              },
+            ),
+            RaisedButton(
+              child: Text('Demo: Send LoadingEvent'),
+              onPressed: () {
+                BlocProvider.of<AppBloc>(context).add(LoadingEvent());
+              },
+            ),
           ],
         ),
       );
