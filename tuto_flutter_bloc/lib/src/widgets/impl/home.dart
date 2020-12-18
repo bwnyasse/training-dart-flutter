@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tuto_flutter_bloc/src/models/models.dart';
 import 'package:tuto_flutter_bloc/src/services/impl/api_service.dart';
 import 'package:tuto_flutter_bloc/src/widgets/widgets.dart';
 import 'package:provider/provider.dart';
