@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
         // Is Loaded
         if (state is AppLoaded) {
-          return LoadedWidget();
+          return LoadedWidget(list: state.response);
         }
 
         // State error
@@ -82,10 +82,13 @@ class _MyHomePageState extends State<MyHomePage> {
 ///  LOADED -----
 ///
 class LoadedWidget extends StatelessWidget {
+  final list;
+
+  LoadedWidget({@required this.list});
+
   @override
   Widget build(BuildContext context) {
-    ApiService service = context.watch<ApiService>();
-    return MoviesList(response: service.loadMockMovies());
+    return MoviesList(response: list);
   }
 }
 
