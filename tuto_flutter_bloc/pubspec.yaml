@@ -22,7 +22,9 @@ dependencies:
 
   # Functions that support JSON code generation via the `json_serializable` package.
   json_annotation: ^3.0.1
-
+  
+  # Widgets that make it easy to integrate blocs and cubits into Flutter. Built to work with package:bloc.
+  flutter_bloc: ^6.1.1
 
 dev_dependencies:
   flutter_test:
