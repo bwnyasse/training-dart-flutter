@@ -23,9 +23,17 @@ L'objectif est de rapidement comprendre l'utilisation de `dart` pour construire 
 
 Ci-dessous , des actions possibles pour tester le code implémenté : 
 
+- `dart` : 
+
         $ dart bin/main.dart 
 
         $ dart bin/main.dart -z 75000
+
+- `dart --enable-asserts` : 
+
+        $ dart --enable-asserts bin/main.dart -z 312
+
+- `dart2native`, `dartaotruntime`  : 
 
         $ dart2native bin/main.dart -o weathercli
 
