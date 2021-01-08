@@ -4,6 +4,7 @@ import 'package:workshop_006_responsive_layout/utils/my_colors.dart'
 
 import 'layout/layout_builder_layout.dart';
 import 'layout/media_query_layout.dart';
+import 'layout/orientation_builder_layout.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -22,6 +23,10 @@ class HomePage extends StatelessWidget {
               LabelWidget(
                 label: 'LayoutBuilderLayout',
                 widget: LayoutBuilderLayout(),
+              ),
+              LabelWidget(
+                label: 'OrientationBuilderLayout',
+                widget: OrientationBuilderLayout(),
               ),
             ],
           ),
