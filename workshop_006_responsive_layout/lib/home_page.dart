@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workshop_006_responsive_layout/demo/screens/demo_home_page.dart';
 import 'package:workshop_006_responsive_layout/utils/my_colors.dart'
     as my_colors;
 
@@ -42,6 +43,10 @@ class HomePage extends StatelessWidget {
               LabelWidget(
                 label: 'AspectRatioLayout',
                 widget: AspectRatioLayout(),
+              ),
+              LabelWidget(
+                label: 'Demo',
+                widget: DemoHomePage(),
               ),
             ],
           ),
