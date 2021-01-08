@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:workshop_006_responsive_layout/utils/my_colors.dart'
     as my_colors;
 
+import 'layout/media_query_layout.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,8 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              LabelWidget(label: 'Workshop Responsive Layout', navigate: false),
+              LabelWidget(
+                  label: 'MediaQueryLayout', widget: MediaQueryLayout()),
             ],
           ),
         ),
