@@ -3,6 +3,7 @@ import 'package:workshop_006_responsive_layout/utils/my_colors.dart'
     as my_colors;
 
 import 'layout/expanded_flexible_layout.dart';
+import 'layout/fractionally_sized_box_layout.dart';
 import 'layout/layout_builder_layout.dart';
 import 'layout/media_query_layout.dart';
 import 'layout/orientation_builder_layout.dart';
@@ -32,6 +33,10 @@ class HomePage extends StatelessWidget {
               LabelWidget(
                 label: 'ExpandedFlexibleLayout',
                 widget: ExpandedFlexibleLayout(),
+              ),
+              LabelWidget(
+                label: 'FractionallySizedBoxLayout',
+                widget: FractionallySizedBoxLayout(),
               ),
             ],
           ),
