@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:workshop_006_responsive_layout/utils/my_colors.dart'
     as my_colors;
 
+import 'layout/layout_builder_layout.dart';
 import 'layout/media_query_layout.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,7 +16,13 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               LabelWidget(
-                  label: 'MediaQueryLayout', widget: MediaQueryLayout()),
+                label: 'MediaQueryLayout',
+                widget: MediaQueryLayout(),
+              ),
+              LabelWidget(
+                label: 'LayoutBuilderLayout',
+                widget: LayoutBuilderLayout(),
+              ),
             ],
           ),
         ),
