@@ -39,6 +39,10 @@ class HomePage extends StatelessWidget {
                 label: 'FractionallySizedBoxLayout',
                 widget: FractionallySizedBoxLayout(),
               ),
+              LabelWidget(
+                label: 'AspectRatioLayout',
+                widget: AspectRatioLayout(),
+              ),
             ],
           ),
         ),
