@@ -15,7 +15,8 @@ dependencies:
   cupertino_icons: ^1.0.1
   random_color: ^1.0.5
   fraction: ^1.2.1
-
+  flutter_screenutil: ^3.2.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

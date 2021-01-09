@@ -9,6 +9,7 @@ import 'layout/fractionally_sized_box_layout.dart';
 import 'layout/layout_builder_layout.dart';
 import 'layout/media_query_layout.dart';
 import 'layout/orientation_builder_layout.dart';
+import 'layout/using_flutter_screenutil.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -47,6 +48,10 @@ class HomePage extends StatelessWidget {
               LabelWidget(
                 label: 'Demo',
                 widget: DemoHomePage(),
+              ),
+              LabelWidget(
+                label: 'Demo using Flutter Screen Util',
+                widget: UsingFlutterScreenUtil(),
               ),
             ],
           ),
