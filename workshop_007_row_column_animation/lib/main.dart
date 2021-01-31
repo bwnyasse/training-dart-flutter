@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workshop_007_row_column_animation/src/expand_sample.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,8 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // TODO-1: Rajouter le widget ExampleSample() dans le home
-      // home: ...
+      home: ExpandSample(),
     );
   }
 }

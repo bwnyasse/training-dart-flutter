@@ -6,10 +6,21 @@ class ExpandSample extends StatefulWidget {
 }
 
 class _ExpandSampleState extends State<ExpandSample> {
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Ca marche"),
+    return Scaffold(
+      body: Center(
+        child: Container(
+          width: 400.0,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              //TODO-2: En s'inspirant du code ci-dessous, rajouter respectivement les widgets fournis
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
