@@ -6,13 +6,14 @@ class ExpandSample extends StatefulWidget {
 }
 
 class _ExpandSampleState extends State<ExpandSample> {
-
   ///If the box is expanded
   bool _isExpanded = false;
 
-    ///Toogle the box to expand or collapse
+  ///Toogle the box to expand or collapse
   void _toogleExpand() {
-    // TODO-4: A vous d'implémenter le changement de valeur _isExpanded
+    setState(() {
+      _isExpanded = !_isExpanded;
+    });
   }
 
   @override
@@ -28,9 +29,8 @@ class _ExpandSampleState extends State<ExpandSample> {
               Material(
                 color: Colors.blue,
                 child: InkWell(
-                  // TODO-3: Renseigner le paramètre nommé 'onTap'
                   // Faites appel à la méthode _toogleExpand pour faire l'expand ou le collapse
-                  // onTap: ...
+                  onTap: _toogleExpand,
                   child: Container(
                     padding: EdgeInsets.all(25.0),
                     width: double.infinity,
