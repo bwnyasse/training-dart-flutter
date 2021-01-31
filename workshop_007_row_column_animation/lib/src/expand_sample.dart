@@ -40,7 +40,26 @@ class _ExpandSampleState extends State<ExpandSample> {
                 ),
               ),
               Visibility(
-                child: Text("Tu me vois et après tu ne me vois plus 😆 😆 "),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      color: Colors.red[900],
+                      padding: EdgeInsets.all(25.0),
+                      child: Text('Hello RED'),
+                    ),
+                    Container(
+                      color: Colors.yellow[900],
+                      padding: EdgeInsets.all(25.0),
+                      child: Text('Hello YELLOW'),
+                    ),
+                    Container(
+                      color: Colors.green[900],
+                      padding: EdgeInsets.all(25.0),
+                      child: Text('Hello GREEN'),
+                    ),
+                  ],
+                ),
                 visible: _isExpanded,
               ),
             ],
