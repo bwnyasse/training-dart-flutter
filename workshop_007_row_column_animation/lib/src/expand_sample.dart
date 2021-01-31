@@ -9,7 +9,12 @@ class _ExpandSampleState extends State<ExpandSample> {
 
   ///If the box is expanded
   bool _isExpanded = false;
-  
+
+    ///Toogle the box to expand or collapse
+  void _toogleExpand() {
+    // TODO-4: A vous d'implémenter le changement de valeur _isExpanded
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
