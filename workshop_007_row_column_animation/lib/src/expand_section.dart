@@ -37,7 +37,11 @@ class _ExpandedSectionState extends State<ExpandedSection>
   @override
   void didUpdateWidget(ExpandedSection oldWidget) {
     super.didUpdateWidget(oldWidget);
-    //TODO: Que faut il mettre ici ? 
+    if (widget.expand) {
+      expandController.forward();
+    } else {
+      expandController.reverse();
+    }
   }
 
   @override
