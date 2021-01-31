@@ -7,6 +7,9 @@ class ExpandSample extends StatefulWidget {
 
 class _ExpandSampleState extends State<ExpandSample> {
 
+  ///If the box is expanded
+  bool _isExpanded = false;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
