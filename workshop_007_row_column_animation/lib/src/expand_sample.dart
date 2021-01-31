@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:workshop_007_row_column_animation/src/expand_section.dart';
 
 class ExpandSample extends StatefulWidget {
   @override
@@ -39,7 +40,8 @@ class _ExpandSampleState extends State<ExpandSample> {
                   ),
                 ),
               ),
-              Visibility(
+              ExpandedSection(
+                expand: _isExpanded,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -60,7 +62,6 @@ class _ExpandSampleState extends State<ExpandSample> {
                     ),
                   ],
                 ),
-                visible: _isExpanded,
               ),
             ],
           ),
