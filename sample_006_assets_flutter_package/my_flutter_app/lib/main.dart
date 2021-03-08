@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: PlatformVersion(
-            image: Image(image: AssetImage('images/android-1.png', package: 'my_flutter_package')),
+            index: "2",
             version: _platformVersion,
           ),
         ),
