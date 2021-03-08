@@ -5,9 +5,9 @@ import 'package:flutter/services.dart';
 
 class PlatformVersion extends StatelessWidget {
   final String version;
-  final Image image;
+  final String  index;
   PlatformVersion({
-    @required this.image,
+    @required this.index,
     @required this.version,
   });
 
@@ -15,7 +15,7 @@ class PlatformVersion extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        image,
+        Image(image: AssetImage('images/android-$index.png', package: 'my_flutter_package')),
         Text('Running on: $version\n'),
       ],
     );
