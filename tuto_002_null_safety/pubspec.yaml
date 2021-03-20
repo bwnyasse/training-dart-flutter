@@ -3,12 +3,11 @@ description: A simple command-line application demonstrating use of null safety.
 version: 1.0.0
 
 environment:
-  #sdk: '>=2.10.0 <3.0.0'
-  sdk: '>=2.12.0-29 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  collection: ^1.15.0-nullsafety  
+  collection: ^1.15.0
 
 dev_dependencies:
-  pedantic: ^1.9.0
+  pedantic: ^1.11.0
   
