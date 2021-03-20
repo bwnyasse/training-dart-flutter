@@ -18,22 +18,21 @@ class ForeCast {
   double cod;
 
   ForeCast({
-    this.coord,
-    this.weather,
-    this.base,
-    this.main,
-    this.visibility,
-    this.wind,
-    this.clouds,
-    this.dt,
-    this.sys,
-    this.id,
-    this.name,
-    this.cod,
+    required this.coord,
+    required this.weather,
+    required this.base,
+    required this.main,
+    required this.visibility,
+    required this.wind,
+    required this.clouds,
+    required this.dt,
+    required this.sys,
+    required this.id,
+    required this.name,
+    required this.cod,
   });
 
-  factory ForeCast.fromJson(Map<String, dynamic> json) =>
-      _$ForeCastFromJson(json);
+  factory ForeCast.fromJson(Map<String, dynamic> json) => _$ForeCastFromJson(json);
   Map<String, dynamic> toJson() => _$ForeCastToJson(this);
 }
 
@@ -43,8 +42,8 @@ class Coord {
   double lat;
 
   Coord({
-    this.lon,
-    this.lat,
+    required this.lon,
+    required this.lat,
   });
 
   factory Coord.fromJson(Map<String, dynamic> json) => _$CoordFromJson(json);
@@ -59,38 +58,36 @@ class Weather {
   String icon;
 
   Weather({
-    this.id,
-    this.main,
-    this.description,
-    this.icon,
+    required this.id,
+    required this.main,
+    required this.description,
+    required this.icon,
   });
 
-  factory Weather.fromJson(Map<String, dynamic> json) =>
-      _$WeatherFromJson(json);
+  factory Weather.fromJson(Map<String, dynamic> json) => _$WeatherFromJson(json);
   Map<String, dynamic> toJson() => _$WeatherToJson(this);
 }
 
 @JsonSerializable()
 class Main {
   double temp;
-  double pressure;
-  double humidity;
   @JsonKey(name: 'temp_min')
   double tempMin;
   @JsonKey(name: 'temp_max')
   double tempMax;
+  double pressure;
+  double humidity;
 
   Main({
-    this.temp,
-    this.pressure,
-    this.humidity,
-    this.tempMin,
-    this.tempMax,
+    required this.temp,
+    required this.pressure,
+    required this.humidity,
+    required this.tempMin,
+    required this.tempMax,
   });
 
   factory Main.fromJson(Map<String, dynamic> json) => _$MainFromJson(json);
   Map<String, dynamic> toJson() => _$MainToJson(this);
-
 }
 
 @JsonSerializable()
@@ -99,8 +96,8 @@ class Wind {
   double deg;
 
   Wind({
-    this.speed,
-    this.deg,
+    required this.speed,
+    required this.deg,
   });
 
   factory Wind.fromJson(Map<String, dynamic> json) => _$WindFromJson(json);
@@ -112,7 +109,7 @@ class Clouds {
   double all;
 
   Clouds({
-    this.all,
+    required this.all,
   });
 
   factory Clouds.fromJson(Map<String, dynamic> json) => _$CloudsFromJson(json);
@@ -123,18 +120,15 @@ class Clouds {
 class Sys {
   int type;
   int id;
-  double message;
   String country;
   int sunrise;
   int sunset;
-
   Sys({
-    this.type,
-    this.id,
-    this.message,
-    this.country,
-    this.sunrise,
-    this.sunset,
+    required this.type,
+    required this.id,
+    required this.country,
+    required this.sunrise,
+    required this.sunset,
   });
 
   factory Sys.fromJson(Map<String, dynamic> json) => _$SysFromJson(json);
