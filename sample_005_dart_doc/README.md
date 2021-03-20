@@ -7,3 +7,24 @@ The goal is to see how to use dartdoc
 
 Created from templates made available by Stagehand under a BSD-style
 [license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+
+
+# Demo 
+
+## Generate the documentation 
+
+    dartdoc
+
+or 
+
+    dartdoc --output your_dir/
+
+## Launch the results in the browser
+
+    cd doc/api
+    python -m SimpleHTTPServer 8080 
+
+or  
+
+    pub global activate dhttpd 
+    dhttpd --path doc/api
