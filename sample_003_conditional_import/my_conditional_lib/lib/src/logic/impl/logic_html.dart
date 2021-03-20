@@ -4,5 +4,5 @@ import 'dart:html' show querySelector;
 void run(final markup) {
   final output = extract.extractWords(markup);
   final result = 'Hello, your Dart Web App is running <br> $output';
-  querySelector('#output').innerHtml = result;
+  querySelector('#output')!.innerHtml = result;
 }
