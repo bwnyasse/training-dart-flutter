@@ -1,0 +1,39 @@
+name: workshop_008_flutter_cross_platform
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+    
+  # A mixture between dependency injection and state management, built with widgets for widgets.
+  provider: ^5.0.0
+  # Functions that support JSON code generation via the `json_serializable` package.
+  json_annotation: ^4.0.1
+  # A composable, Future-based library for making HTTP requests.
+  http: ^0.13.1
+  # A Flutter plugin to share content from your Flutter app via the platform's share dialog.
+  share: ^2.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # Tools to write binaries that run builders.
+  build_runner: ^1.12.2
+  # Automatically generate code for converting to and from JSON by annotating Dart classes.
+  json_serializable: ^4.1.0
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/workshop-image.png
