@@ -10,7 +10,7 @@ The official documentation can be found [here](https://dart.dev/guides/language/
  
 ## Demo
 
-- Add **pedantic** in the `pubspec.yaml``
+- Add **pedantic** in the `pubspec.yaml`
 
 - Play the following rule in your `analysis_options.yaml` :
 
