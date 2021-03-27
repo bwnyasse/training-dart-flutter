@@ -1,0 +1,8 @@
+name: sample_008_using_linting
+description: A simple command-line application for linting.
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+#dev_dependencies:
+#  pedantic: ^1.9.0
