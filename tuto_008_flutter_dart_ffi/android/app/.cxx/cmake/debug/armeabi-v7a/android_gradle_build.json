@@ -1,0 +1,41 @@
+
+{
+	"buildFiles" : 
+	[
+		"/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/CMakeLists.txt"
+	],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/Users/bwnyasse/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/armeabi-v7a --target clean"
+	],
+	"libraries" : 
+	{
+		"nba-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "nba",
+			"buildCommand" : "/Users/bwnyasse/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/armeabi-v7a --target nba",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi16 --gcc-toolchain=/Users/bwnyasse/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/bwnyasse/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dnba_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/src/nba.c",
+					"workingDirectory" : "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/build/app/intermediates/cmake/debug/obj/armeabi-v7a/libnba.so",
+			"toolchain" : "4590157909488429548"
+		}
+	},
+	"toolchains" : 
+	{
+		"4590157909488429548" : 
+		{
+			"cCompilerExecutable" : "/Users/bwnyasse/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/bwnyasse/Library/Android/sdk/ndk/22.1.7171670/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}

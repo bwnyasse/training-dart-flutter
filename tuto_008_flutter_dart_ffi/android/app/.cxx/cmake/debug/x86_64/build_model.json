@@ -1,0 +1,70 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android",
+      "sdkFolder": "/Users/bwnyasse/Library/Android/sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/build/app/intermediates",
+      "gradleModulePathName": ":app",
+      "moduleRootFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app",
+      "makeFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/.cxx",
+      "cxxFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx",
+      "ndkFolder": "/Users/bwnyasse/Library/Android/sdk/ndk/22.1.7171670",
+      "ndkVersion": "22.1.7171670",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [],
+    "variantName": "debug",
+    "soFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/build/app/intermediates/cmake/debug/lib",
+    "objFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/build/app/intermediates/cmake/debug/obj",
+    "jsonFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug",
+    "gradleBuildOutputFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cxx/debug",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "X86_64",
+  "abiPlatformVersion": 16,
+  "cxxBuildFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/x86_64",
+  "jsonFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/x86_64/android_gradle_build.json",
+  "gradleBuildOutputFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cxx/debug/x86_64",
+  "objFolder": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/build/app/intermediates/cmake/debug/obj/x86_64",
+  "buildCommandFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/x86_64/build_command.txt",
+  "buildOutputFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/x86_64/build_output.txt",
+  "modelOutputFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/x86_64/build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cxx/debug/x86_64/CMakeLists.txt",
+    "toolchainWrapperFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cxx/debug/x86_64/android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cxx/debug/x86_64/build_generation_state.json",
+    "cacheKeyFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cxx/debug/x86_64/compiler_cache_key.json",
+    "compilerCacheUseFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cxx/debug/x86_64/compiler_cache_use.json",
+    "compilerCacheWriteFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cxx/debug/x86_64/compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cxx/debug/x86_64/compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/x86_64/json_generation_record.json",
+  "compileCommandsJsonFile": "/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/x86_64/compile_commands.json"
+}

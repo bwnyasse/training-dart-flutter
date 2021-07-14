@@ -1,0 +1,8 @@
+Executable : /Users/bwnyasse/Library/Android/sdk/cmake/3.6.4111459/bin/cmake
+arguments : 
+--build
+/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/tuto_008_flutter_dart_ffi/android/app/.cxx/cmake/debug/x86
+--target
+nba
+jvmArgs : 
+
