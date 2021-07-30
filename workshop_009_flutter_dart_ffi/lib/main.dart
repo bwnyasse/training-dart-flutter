@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// TODO- Import bridge dart
+import 'ffi_bridge.dart';
 
 void main() {
   runApp(MyApp());
