@@ -1,0 +1,2 @@
+[1/2] Building C object CMakeFiles/nba.dir/Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/workshop_009_flutter_dart_ffi/src/nba.c.o
+[2/2] Linking C shared library /Users/bwnyasse/gr/github/bwnyasse/training-dart-flutter/workshop_009_flutter_dart_ffi/build/app/intermediates/cmake/debug/obj/x86/libnba.so
