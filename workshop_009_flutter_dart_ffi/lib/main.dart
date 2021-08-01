@@ -30,7 +30,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // TODO- create the bridge reference
+  //  create the bridge reference
+  final FFIBridge _ffiBridge = FFIBridge();
 
   void _show(message) {
     showDialog(
@@ -54,29 +55,29 @@ class _MyHomePageState extends State<MyHomePage> {
             Image(image: AssetImage('images/Logo-NBA.png')),
             ElevatedButton(
               onPressed: () async {
-                // TODO- show the answer - What is the NBA ?
-                _show('TODO- show the answer - What is the NBA ?');
+                // show the answer - What is the NBA ?
+                _show(_ffiBridge.getDefinition());
               },
               child: const Text('What is the NBA ? '),
             ),
             ElevatedButton(
               onPressed: () async {
-                // TODO- show the answer - Max players ?
-                _show('TODO- show the answer - Max players ?');
+                // show the answer - Max players ?
+                _show(_ffiBridge.getMaxOfPlayers());
               },
               child: const Text('Max players ? '),
             ),
             ElevatedButton(
               onPressed: () async {
-                // TODO- show the answer - Best player ?
-                _show('TODO- show the answer - Best player ?');
+                // show the answer - Best player ?
+                _show(_ffiBridge.getBestPlayer());
               },
               child: const Text('Best player ? '),
             ),
             ElevatedButton(
               onPressed: () async {
-                // TODO- show the answer - NBA FAQ
-                _show('TODO- show the answer - NBA FAQ');
+                // show the answer - NBA FAQ
+                _show(_ffiBridge.getNbaFAQ(false));
               },
               child: const Text('NBA FAQ'),
             ),
