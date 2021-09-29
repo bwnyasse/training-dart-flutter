@@ -22,19 +22,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Demo: Send LoadEvent'),
               onPressed: () {
                 BlocProvider.of<AppBloc>(context).add(LoadEvent());
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Demo: Send ErrorEvent'),
               onPressed: () {
                 BlocProvider.of<AppBloc>(context).add(ErrorEvent());
               },
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Demo: Send LoadingEvent'),
               onPressed: () {
                 BlocProvider.of<AppBloc>(context).add(LoadingEvent());

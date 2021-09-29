@@ -11,8 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # A mixture between dependency injection and state management, built with widgets for widgets.
-  #provider: ^4.0.4
 
   # Helps to implement equality without needing to explicitly override == and hashCode.
   equatable: ^2.0.3
