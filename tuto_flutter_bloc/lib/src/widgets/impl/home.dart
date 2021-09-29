@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tuto_flutter_bloc/src/blocs/blocs.dart';
+import 'package:tuto_flutter_bloc/src/cubits/impl/app_cubit.dart';
 import 'package:tuto_flutter_bloc/src/widgets/widgets.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -25,19 +26,19 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               child: Text('Demo: Send LoadEvent'),
               onPressed: () {
-                BlocProvider.of<AppBloc>(context).add(LoadEvent());
+                BlocProvider.of<AppCubit>(context).onLoadEvent();
               },
             ),
             ElevatedButton(
               child: Text('Demo: Send ErrorEvent'),
               onPressed: () {
-                BlocProvider.of<AppBloc>(context).add(ErrorEvent());
+                BlocProvider.of<AppCubit>(context).onErrorEvent();
               },
             ),
             ElevatedButton(
               child: Text('Demo: Send LoadingEvent'),
               onPressed: () {
-                BlocProvider.of<AppBloc>(context).add(LoadingEvent());
+                BlocProvider.of<AppCubit>(context).onLoadingEvent();
               },
             ),
           ],
@@ -51,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       drawer: _buildDrawer(),
-      body: BlocBuilder<AppBloc, AppState>(builder: (context, state) {
+      body: BlocBuilder<AppCubit, AppState>(builder: (context, state) {
         // Is Loading
         if (state is AppLoading) {
           return LoadingWidget(

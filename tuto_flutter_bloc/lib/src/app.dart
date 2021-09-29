@@ -4,6 +4,8 @@ import 'package:tuto_flutter_bloc/src/blocs/blocs.dart';
 import 'package:tuto_flutter_bloc/src/services/services.dart';
 import 'package:tuto_flutter_bloc/src/widgets/widgets.dart';
 
+import 'cubits/impl/app_cubit.dart';
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.purple),
       // Fournit le bloc à tous les noeuds sous-adjacents
       home: BlocProvider(
-        create: (context) => AppBloc(
+        create: (context) => AppCubit(
           service: apiService,
         ),
         child: MyHomePage(title: 'Tutorial Formation - BLOC'),
