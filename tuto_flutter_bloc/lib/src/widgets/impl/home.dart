@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tuto_flutter_bloc/src/blocs/blocs.dart';
-import 'package:tuto_flutter_bloc/src/services/impl/api_service.dart';
 import 'package:tuto_flutter_bloc/src/widgets/widgets.dart';
-import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;
-  MyHomePage({@required this.title});
+  MyHomePage({required this.title});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -113,7 +111,7 @@ class ErrorWidget extends StatelessWidget {
 class LoadingWidget extends StatelessWidget {
   final String message;
 
-  LoadingWidget({@required this.message});
+  LoadingWidget({required this.message});
   @override
   Widget build(BuildContext context) {
     return Center(

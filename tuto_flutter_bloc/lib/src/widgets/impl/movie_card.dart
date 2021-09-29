@@ -4,7 +4,7 @@ import 'package:tuto_flutter_bloc/src/models/models.dart';
 class MovieCard extends StatelessWidget {
   final Movie data;
 
-  MovieCard({@required this.data});
+  MovieCard({required this.data});
 
   @override
   Widget build(BuildContext context) {

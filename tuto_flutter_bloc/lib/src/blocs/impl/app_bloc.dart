@@ -1,15 +1,12 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:tuto_flutter_bloc/src/blocs/blocs.dart';
 import 'package:tuto_flutter_bloc/src/services/services.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
   final ApiService service;
-  final AppState initWithState;
 
   AppBloc({
-    @required this.service,
-    this.initWithState,
+    required this.service,
   }) : super(AppEmpty());
 
   @override

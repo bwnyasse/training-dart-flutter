@@ -24,7 +24,7 @@ class ApiService {
     final path = '$api/$urlPath?api_key=$apiKey&language=en-US';
 
     // appel asynchrone
-    final response = await client.get(path);
+    final response = await client.get(Uri.parse(path));
 
     if (response.statusCode != 200) {
       throw LoadMoviesException(
