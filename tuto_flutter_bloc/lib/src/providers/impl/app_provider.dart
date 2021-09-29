@@ -33,8 +33,8 @@ class AppProvider extends StatelessWidget {
   final Widget child;
 
   AppProvider({
-    @required this.httpClient,
-    @required this.child,
+    required this.httpClient,
+    required this.child,
   });
 
   @override

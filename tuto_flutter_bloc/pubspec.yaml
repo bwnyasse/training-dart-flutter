@@ -1,3 +1,5 @@
+
+   
 name: tuto_flutter_bloc
 description: A new Flutter project.
 
@@ -6,33 +8,33 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  # A mixture between dependency injection and state management, built with widgets for widgets.
-  provider: ^4.0.4
 
   # Helps to implement equality without needing to explicitly override == and hashCode.
-  equatable: ^1.1.1
+  equatable: ^2.0.3
 
   # A composable, multi-platform, Future-based API for HTTP requests.
-  http: ^0.12.0+4
+  http: ^0.13.3
 
   # Functions that support JSON code generation via the `json_serializable` package.
-  json_annotation: ^3.0.1
-
+  json_annotation: ^4.1.0
+  
+  # Widgets that make it easy to integrate blocs and cubits into Flutter. Built to work with package:bloc.
+  flutter_bloc: ^7.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   # Tools to write binaries that run builders.
-  build_runner: ^1.8.0
+  build_runner: ^2.1.2
 
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
-  json_serializable: ^3.2.5
+  json_serializable: ^5.0.2
 
 flutter:
   uses-material-design: true

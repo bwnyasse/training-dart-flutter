@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;
-  MyHomePage({@required this.title});
+  MyHomePage({required this.title});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -73,7 +73,7 @@ class ErrorWidget extends StatelessWidget {
 class LoadingWidget extends StatelessWidget {
   final String message;
 
-  LoadingWidget({@required this.message});
+  LoadingWidget({required this.message});
   @override
   Widget build(BuildContext context) {
     return Center(

@@ -5,7 +5,7 @@ import 'package:tuto_flutter_bloc/src/widgets/widgets.dart';
 class MoviesList extends StatelessWidget {
   final MoviesResponse response;
 
-  MoviesList({@required this.response});
+  MoviesList({required this.response});
 
   @override
   Widget build(BuildContext context) {
