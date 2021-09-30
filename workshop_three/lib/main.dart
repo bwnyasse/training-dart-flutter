@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({ required this.title});
 
   final String title;
 
@@ -34,14 +34,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Platform The client and host sides of a channel are connected
   // through a channel name passed in the channel constructor
-  //TODO: Récuperer le channel
+  //TODO-1: Récuperer le channel
 
   // Get battery level.
   String _batteryLevelMsg = 'Unknown battery level.';
   double _percent = 0;
 
   Future<void> _getBatteryLevel() async {
-    //TODO: Méthode qui va récupérer le niveau de la batterie en faisant appel via la méthode 'invokeMethod'
+    //TODO-2: Méthode qui va récupérer le niveau de la batterie en faisant appel via la méthode 'invokeMethod'
   }
 
   @override
