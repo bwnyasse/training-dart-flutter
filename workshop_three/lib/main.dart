@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mybatterylevel/mybatterylevel.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 void main() {
@@ -35,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // Platform The client and host sides of a channel are connected
   // through a channel name passed in the channel constructor
   //RESOLUTION: Récuperer le channel
-  static const platform = const MethodChannel('samples.flutter.dev/battery');
+  //static const platform = const MethodChannel('samples.flutter.dev/battery');
 
   // Get battery level.
   String _batteryLevelMsg = 'Unknown battery level.';
@@ -46,8 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
     String msg;
     double value;
     try {
-      final int result = await platform.invokeMethod('getBatteryLevel');
-      value = result.toDouble() / 100;
+      final int? result = await Mybatterylevel.batteryLevel;
+      value = result!.toDouble() / 100;
       msg = 'Battery level at $result % .';
     } on PlatformException catch (e) {
       msg = "Failed to get battery level: '${e.message}'.";
