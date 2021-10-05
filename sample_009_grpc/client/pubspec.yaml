@@ -1,0 +1,9 @@
+name: sample_dart_grpc_client
+description: Command-line application - demonstrate grpc in dart.
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  protobuf: ^2.0.0
+  grpc: ^3.0.2

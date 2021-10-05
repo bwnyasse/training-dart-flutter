@@ -1,0 +1,61 @@
+//Use this to set the proto language version. As of this article, proto3 is the current version and the syntax here will adhere to its rules
+syntax = "proto3";
+
+//Define the package/namespace that will be used in the generated code
+package moviecatalog;
+
+//These are additional options you can provide to the proto compiler. We are using them to make our generated Java code a little bit more organized; this is not required.
+option java_package = "net.bwnyasse";
+option java_outer_classname = "MovieCatalogProto";
+option java_multiple_files = true;
+
+/*******************************************
+ *  MESSAGE TO SHARE REQUEST <--> RESPONSE
+ ******************************************/
+
+// Defines a message (similar to a struct or data object) with the given name
+message MovieItem {
+  // Each property has a type that will be converted the appropriate equivalent
+  // in the compiled language `string` is the data type. *This must NOT change
+  // after it has been used in production or you WILL break clients* `name` is
+  // the label given to that data type. This can change later if you decide on a
+  // better name.
+  //`= 1;` is the interesting bit. The number here is an index used by the
+  // generated code to understand which value to serialize/deserialize between
+  // clients and servers. *This must NOT change* If you no longer wish to use
+  // this field in the future, you MUST create a new field and leave this one
+  // unused in your implementation but you can NOT remove it.
+  string name = 1;
+  double price = 2;
+  bool inStock = 3;
+}
+
+message AddMovieResponse {
+  bool wasSaved = 1;
+  int32 itemId = 2;
+}
+
+message FetchMovieRequest { string name = 1; }
+
+/******************************
+ *  SERVICE
+ *******************************/
+
+// Defines our gRPC service name
+service MovieCatalog {
+
+  // This has a few things going on, so let's dissect this line:
+  // `rpc` is a keyword that defines the contract (ie function/method name) of
+  // this remote procedure call `SaveNewMovie` is the name of the method that
+  // will be generated
+  // `(MovieItem)` is the message type we will pass as an argument to
+  // `SaveNewMovie()` in our code `returns (AddMovieResponse)` will send a
+  // message with the `AddMovieResponse` format back to the caller once it
+  // completes successfully
+  // `{}` is used for additional custom options that are out of scope for this
+  // article
+
+  rpc SaveNewMovie(MovieItem) returns (AddMovieResponse) {}
+
+  rpc FetchExistingMovie(FetchMovieRequest) returns (MovieItem) {}
+}
