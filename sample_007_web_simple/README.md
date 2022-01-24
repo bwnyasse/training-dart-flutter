@@ -10,6 +10,10 @@ The goal is to see how to use `dart2js` and `webdev`
 
 # Demo 
 
+## Play with dart2js
+
+    cd example && dart2js -O2 -o test.js main.dar
+
 ## Install web development tools 
 
     pub global activate webdev
