@@ -1,6 +1,6 @@
 # training-dart-flutter
 
-## sample dart cli
+## sample dart cli : https://dart.dev/tools/dart-compile 
 
 L'objectif est de rapidement comprendre l'utilisation de `dart` pour construire une application `cli` : 
 
