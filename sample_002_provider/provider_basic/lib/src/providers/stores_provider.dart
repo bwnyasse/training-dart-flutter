@@ -5,7 +5,7 @@ import 'package:provider_basic/src/stores/counter.dart';
 class StoresProvider extends StatelessWidget {
   final Widget child;
 
-  StoresProvider({@required this.child});
+  StoresProvider({required this.child});
 
   @override
   Widget build(BuildContext context) {
