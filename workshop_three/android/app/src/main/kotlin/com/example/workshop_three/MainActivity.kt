@@ -14,13 +14,9 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity: FlutterActivity() {
-}
-
     //TODO-4: Nommage du channel de communication host <-> client
 
-    //TODO-5: Configuration du framework pour communiquer et récuperer le niveau 
-    // de la batterie via le channel
+    //TODO-5: Configuration du framework pour communiquer et récuperer le niveau  de la batterie via le channel
 
     //TODO-3: implémentation android de la récupération de la batterie
-
 }
