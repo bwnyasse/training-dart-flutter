@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:random_color/random_color.dart';
-import 'package:workshop_006_responsive_layout/demo/res/custom_colors.dart';
 import 'package:workshop_006_responsive_layout/demo/widgets/text_view.dart';
 
 /// The content to the displayed in each ChatList item
@@ -28,8 +27,8 @@ class ContactItem extends StatelessWidget {
               padding: const EdgeInsets.only(left: 16.0),
               child: TextViewMedium(),
             )),
-            RaisedButton(
-              color: CustomColors.neon_green,
+            ElevatedButton(
+              //color: CustomColors.neon_green,
               onPressed: () {},
               child: Text(
                 'invite',
