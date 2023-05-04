@@ -10,14 +10,14 @@ class AppProvider extends StatelessWidget {
   final Widget child;
 
   AppProvider({
-    @required this.child,
+    required this.child,
   });
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<ApiService>(create: (_) =>  ApiService()),
+        Provider<ApiService>(create: (_) => ApiService()),
       ],
       child: child,
     );

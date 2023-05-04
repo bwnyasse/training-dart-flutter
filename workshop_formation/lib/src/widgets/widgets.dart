@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class ListItem extends StatefulWidget {
   final String data;
   final GestureTapCallback onTapCallback;
-  ListItem({this.data,this.onTapCallback}) {
+  ListItem({required this.data, required this.onTapCallback}) {
     print('creating list item $data');
   }
 

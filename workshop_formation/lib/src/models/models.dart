@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+//NB : Générer le fichier `flutter pub run build_runner build --delete-conflicting-outputs`
 part 'models.g.dart';
 
 // ------------------
@@ -10,20 +11,21 @@ part 'models.g.dart';
 class MoviesResponse {
   int page;
 
+  // API: https://developers.themoviedb.org/3/movies/get-top-rated-movies
   @JsonKey(name: 'total_results')
   int totalResults;
 
   @JsonKey(name: 'total_pages')
   int totalPages;
 
-  @JsonKey(nullable: false, name: 'results')
+  @JsonKey(name: 'results')
   List<Movie> movies;
 
   MoviesResponse({
-    this.page,
-    this.totalPages,
-    this.totalResults,
-    this.movies,
+    required this.page,
+    required this.totalPages,
+    required this.totalResults,
+    required this.movies,
   });
 
   factory MoviesResponse.fromJson(Map<String, dynamic> json) =>
@@ -37,43 +39,43 @@ class MoviesResponse {
 class Movie {
   int id;
 
-  bool video;
+  bool video = false;
 
   @JsonKey(name: 'vote_count')
-  int voteCount;
+  int voteCount = 0;
 
   @JsonKey(name: 'vote_average')
-  double voteAverage;
+  double voteAverage = 0;
 
-  String title;
+  String title = "";
 
   @JsonKey(name: 'poster_path')
-  String posterPath;
+  String posterPath = "";
 
   @JsonKey(name: 'original_language')
-  String originalLanguage;
+  String originalLanguage = "";
 
   @JsonKey(name: 'original_title')
-  String originalTitle;
+  String originalTitle = "";
 
-  bool adult;
-  String overview;
+  bool adult = false;
+  String overview = "";
 
-  @JsonKey(name: 'gender_ids')
+  @JsonKey(name: 'genre_ids')
   List genreIds = [];
 
   @JsonKey(name: 'backdrop_path')
-  String backdropPath;
+  String backdropPath = "";
 
-  double popularity;
+  double popularity = 0;
 
   @JsonKey(name: 'release_date')
-  String releaseDate;
+  String releaseDate = "";
 
   @JsonKey(defaultValue: false)
-  bool favorite;
+  bool favorite = false;
 
-  Movie({this.id});
+  Movie({required this.id});
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 }

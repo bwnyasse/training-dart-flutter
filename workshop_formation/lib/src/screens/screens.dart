@@ -40,7 +40,8 @@ class _Screen1State extends State<Screen1> {
   }
 
   _loadMovies() {
-    final apiService = context.read<ApiService>();
+    //TODO : Valoriser apiService
+    final apiService = ApiService();
     MoviesResponse response = apiService.loadMovies();
     movies = response.movies;
   }
@@ -53,6 +54,7 @@ class _Screen1State extends State<Screen1> {
         title: Text(localizations.getValue(LocaleKey.screen1Title)),
       ),
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
+      //TODO: Comprendre la mise à jour de la liste pour afficher les movies
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
         itemCount: movies.length,
@@ -84,7 +86,8 @@ class Screen2 extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context);
     //RESOLUTION: Comment récuperer l'argument dans l'écran ?
-    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+    final ScreenArguments args =
+        ModalRoute.of(context)!.settings.arguments as ScreenArguments;
     return Scaffold(
       appBar: AppBar(
         title: Text(localizations.getValue(LocaleKey.screen2Title)),
