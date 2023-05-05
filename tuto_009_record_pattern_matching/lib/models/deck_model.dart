@@ -110,7 +110,7 @@ class Deck {
   String toString() => cards.join("\n");
 }
 
-List<flip_card.FlipCard> getPlayingCardView() {
+List<flip_card.FlipCard> loadPlayingCardView() {
   Deck deck = Deck.init().shuffle;
   return deck.cards
       .map((record) => getFlipCard(PlayingCardView(

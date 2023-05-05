@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:playing_cards/playing_cards.dart';
+import 'package:flip_card/flip_card.dart' as flip_card;
 import 'models/deck_model.dart';
 
 const TextStyle kTitleTextStyle = TextStyle(
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: CardsPage(title: '52 Card Deck'),
+      home: const CardsPage(title: '52 Card Deck'),
     );
   }
 }
@@ -38,6 +38,14 @@ class CardsPage extends StatefulWidget {
 }
 
 class _CardsPageState extends State<CardsPage> {
+  List<flip_card.FlipCard> flipCards = [];
+
+  @override
+  void initState() {
+    flipCards = loadPlayingCardView();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,8 +67,12 @@ class _CardsPageState extends State<CardsPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
+        onPressed: () {
+          setState(() {
+            flipCards = loadPlayingCardView();
+          });
+        },
+        tooltip: 'shuffle',
         child: const Icon(Icons.add),
       ),
       body: CustomScrollView(
@@ -71,9 +83,9 @@ class _CardsPageState extends State<CardsPage> {
             sliver: SliverGrid.count(
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              crossAxisCount: 10,
+              crossAxisCount: 5,
               children: <Widget>[
-                for (var cardToDisplay in getPlayingCardView()) cardToDisplay,
+                for (var cardToDisplay in flipCards) cardToDisplay,
               ],
             ),
           ),
