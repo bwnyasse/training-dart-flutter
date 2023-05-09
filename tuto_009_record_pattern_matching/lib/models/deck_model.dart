@@ -1,17 +1,12 @@
-import 'dart:math';
-
-import 'package:flip_card/flip_card.dart' as flip_card;
-import 'package:flutter/material.dart';
-import 'package:playing_cards/playing_cards.dart';
-
 import 'card_model.dart';
 import 'rank_model.dart';
 import 'suit_model.dart';
 
+
 ///
 ///  52-card deck structure
 ///
-const List<CardModel> _deck = [
+const List<CardModel> deckModel = [
   // Clubs
 
   (Clubs(), Ace()),
@@ -73,58 +68,3 @@ const List<CardModel> _deck = [
   (Spades(), Queen()),
   (Spades(), King()),
 ];
-
-class Deck {
-  final List<CardModel> cards;
-  const Deck._(this.cards);
-
-  factory Deck.init() => const Deck._(_deck);
-
-  (CardModel, Deck) get pickCard {
-    final cardIndex = Random().nextInt(cards.length);
-    return (
-      cards[cardIndex],
-      // remove the picked card from the deck
-      Deck._([
-        ...cards.sublist(0, cardIndex),
-        ...cards.sublist(cardIndex + 1),
-      ])
-    );
-  }
-
-  Deck get shuffle {
-    List<CardModel> source = [...cards];
-    for (int i = source.length - 1; i > 0; i--) {
-      final j = (Random().nextDouble() * (i + 1)).floor();
-      final sourceI = source[i];
-      source[i] = source[j];
-      source[j] = sourceI;
-    }
-
-    return Deck._(source);
-  }
-
-  bool get isEmpty => cards.isEmpty;
-
-  @override
-  String toString() => cards.join("\n");
-}
-
-List<flip_card.FlipCard> loadPlayingCardView() {
-  Deck deck = Deck.init().shuffle;
-  return deck.cards
-      .map((record) => getFlipCard(PlayingCardView(
-          card: PlayingCard(getSuit(record.$1), record.$2.value))))
-      .toList();
-}
-
-flip_card.FlipCard getFlipCard(PlayingCardView view) {
-  return flip_card.FlipCard(
-    fill: flip_card.Fill
-        .fillBack, // Fill the back side of the card to make in the same size as the front.
-    direction: flip_card.FlipDirection.HORIZONTAL, // default
-    side: flip_card.CardSide.FRONT, // The side to initially display.
-    front: view,
-    back: Image.asset('assets/back.jpeg'),
-  );
-}

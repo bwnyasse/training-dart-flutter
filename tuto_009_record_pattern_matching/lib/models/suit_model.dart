@@ -66,7 +66,7 @@ Suit getSuit(SuitModel suitModel) {
     case Diamonds:
       return Suit.diamonds;
     case Clubs:
-      return Suit.clubs;
+     return Suit.clubs;
     default:
       throw ArgumentError("Invalid suit type");
   }

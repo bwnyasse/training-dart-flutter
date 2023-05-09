@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flip_card/flip_card.dart' as flip_card;
+import 'package:playing_cards/playing_cards.dart';
 import 'models/deck_model.dart';
+import 'package:flip_card/flip_card.dart';
+
+import 'models/suit_model.dart';
 
 const TextStyle kTitleTextStyle = TextStyle(
   fontSize: 16.0,
@@ -38,11 +41,14 @@ class CardsPage extends StatefulWidget {
 }
 
 class _CardsPageState extends State<CardsPage> {
-  List<flip_card.FlipCard> flipCards = [];
+  List<FlipCard> deckCards = [];
 
   @override
   void initState() {
-    flipCards = loadPlayingCardView();
+    deckCards = deckModel
+        .map((record) => getFlipCard(PlayingCardView(
+            card: PlayingCard(getSuit(record.$1), record.$2.value))))
+        .toList();
     super.initState();
   }
 
@@ -66,15 +72,6 @@ class _CardsPageState extends State<CardsPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            flipCards = loadPlayingCardView();
-          });
-        },
-        tooltip: 'shuffle',
-        child: const Icon(Icons.add),
-      ),
       body: CustomScrollView(
         primary: false,
         slivers: <Widget>[
@@ -85,7 +82,7 @@ class _CardsPageState extends State<CardsPage> {
               mainAxisSpacing: 10,
               crossAxisCount: 5,
               children: <Widget>[
-                for (var cardToDisplay in flipCards) cardToDisplay,
+                for (var cardToDisplay in deckCards) cardToDisplay,
               ],
             ),
           ),
@@ -93,4 +90,15 @@ class _CardsPageState extends State<CardsPage> {
       ),
     );
   }
+}
+
+FlipCard getFlipCard(PlayingCardView view) {
+  return FlipCard(
+    fill: Fill
+        .fillBack, // Fill the back side of the card to make in the same size as the front.
+    direction: FlipDirection.HORIZONTAL, // default
+    side: CardSide.FRONT, // The side to initially display.
+    front: view,
+    back: Image.asset('assets/back.jpeg'),
+  );
 }
