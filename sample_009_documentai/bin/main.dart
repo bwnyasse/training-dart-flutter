@@ -1,9 +1,7 @@
 import 'dart:io';
 
-import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
 import 'package:sample_009_documentai/commands/commands.dart';
-import 'package:sample_009_documentai/service/service.dart';
 
 void main(List<String> arguments) {
   final runner = CommandRunner(
