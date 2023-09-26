@@ -23,3 +23,7 @@ String getSAKey() => File(p.join(
       isRunningInDockerContainer(),
       'sa-key.json',
     )).readAsStringSync();
+
+String removeNewlines(String? s) {
+  return s?.replaceAll("\n", "").replaceAll("\r", "") ?? "";
+}
