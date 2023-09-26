@@ -1,6 +1,4 @@
-# DartDocumentAISample 
-
-**The Document AI Sample CLI Tool for Dart Developers**
+# DartDocumentAISample : a Document AI Sample CLI Tool for Dart Developers
 
 **DartDocumentAISample** is a personal initiative to showcase the capabilities of the Dart language in building applications that interact with Google Cloud services. The core of this project revolves around demonstrating how Dart can be seamlessly integrated with Google Cloud's DocumentAI. As a hands-on example, it provides Dart developers with practical insights into processing, managing, and leveraging DocumentAI's powerful features within a Dart-centric workflow. Please note that this is a work-in-progress, and contributions to enhance its offerings are warmly welcomed. For a glimpse of the roadmap, refer to the TODOs section below.
 
