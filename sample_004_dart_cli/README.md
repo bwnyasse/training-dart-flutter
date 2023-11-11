@@ -13,9 +13,8 @@ L'objectif est de rapidement comprendre l'utilisation de `dart` pour construire 
 - On utilise l'api [openweathermap](https://openweathermap.org/api) pour récupérer le climat.
 - On essaie de comprendre l'utilisation de 
     
-        $ dart2native
+        $ dart compile
 
-        $ dartaotruntime
 
 - Manipulation de `part` , `part of`, sérialisation/désérialisation avec `json_annotation`
 
@@ -35,13 +34,13 @@ Ci-dessous , des actions possibles pour tester le code implémenté :
 
 - `dart2native`, `dartaotruntime`  : 
 
-        $ dart2native bin/main.dart -o weathercli
+        $ dart compile exe bin/main.dart -o weathercli
 
         $ ./weathercli 
 
         $ ./weathercli -z 75000
 
-        $ dart2native bin/main.dart -k aot
+        $ dart compile aot-snapshot bin/main.dart 
 
         $ dartaotruntime bin/main.aot
 
