@@ -10,7 +10,7 @@ class AppProvider extends StatelessWidget {
   final Widget child;
 
   AppProvider({
-    @required this.child,
+    required this.child,
   });
 
   @override
