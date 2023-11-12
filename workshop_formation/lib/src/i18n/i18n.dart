@@ -15,9 +15,10 @@ class AppLocalizations {
 
   final Locale locale;
 
-  static AppLocalizations of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
-  }
+static AppLocalizations of(BuildContext context) {
+  return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
+}
+
 
  static Map<String, Map<String, String>> _localizedValues = {
     'fr': {
@@ -38,8 +39,7 @@ class AppLocalizations {
     },
   };
 
-
-  String getValue(LocaleKey key) => _localizedValues[locale.languageCode][key.toString()];
+  String? getValue(LocaleKey key) => _localizedValues[locale.languageCode]?[key.toString()];
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

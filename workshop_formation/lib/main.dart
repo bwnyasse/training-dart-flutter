@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       onGenerateTitle: (BuildContext context) =>
-          AppLocalizations.of(context).getValue(LocaleKey.title),
+          AppLocalizations.of(context).getValue(LocaleKey.title)!,
       localizationsDelegates: [
         const AppLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
-        const Locale('fr',''), // French, no country code
-        const Locale('en',''),// English, no country code
+        const Locale('fr', ''), // French, no country code
+        const Locale('en', ''), // English, no country code
       ],
       //RESOLUTION: configurer la navigation
       initialRoute: '/',
