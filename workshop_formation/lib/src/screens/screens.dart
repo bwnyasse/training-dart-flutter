@@ -40,10 +40,9 @@ class _Screen1State extends State<Screen1> {
   }
 
   _loadMovies() {
-    // TODO : Charger les films à afficher depuis l'API MoviesDB
     final apiService = context.read<ApiService>();
     MoviesResponse response = apiService.loadMovies();
-    movies = response.movies;
+    movies = response.movies!;
   }
 
   @override
@@ -51,7 +50,7 @@ class _Screen1State extends State<Screen1> {
     AppLocalizations localizations = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.getValue(LocaleKey.screen1Title)),
+        title: Text(localizations.getValue(LocaleKey.screen1Title)!),
       ),
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
       body: ListView.builder(
@@ -59,8 +58,8 @@ class _Screen1State extends State<Screen1> {
         itemCount: movies.length,
         itemBuilder: (BuildContext context, int index) {
           Movie movie = movies[index];
-          String originalTitle = movie.originalTitle;
-          String releaseDate = movie.releaseDate;
+          String originalTitle = movie.originalTitle!;
+          String releaseDate = movie.releaseDate!;
           return ListItem(
             data: "$originalTitle - Date : $releaseDate",
             onTapCallback: () {
@@ -85,10 +84,10 @@ class Screen2 extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context);
     //RESOLUTION: Comment récuperer l'argument dans l'écran ?
-    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+    final ScreenArguments args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.getValue(LocaleKey.screen2Title)),
+        title: Text(localizations.getValue(LocaleKey.screen2Title)!),
       ),
       body: Center(
         child: Column(
