@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class ListItem extends StatefulWidget {
   final int index;
 
-  ListItem({this.index}) {
+  ListItem({required this.index}) {
     print('creating list item $index');
   }
 

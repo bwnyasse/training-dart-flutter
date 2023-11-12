@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:workshop_formation/src/models/models.dart';
-import 'package:workshop_formation/src/widgets/widgets.dart';
 
 // ------------------
 // UnknowScreen
@@ -54,7 +53,7 @@ class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //RESOLUTION: Comment récuperer l'argument dans l'écran ?
-    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+    final ScreenArguments args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
     return Scaffold(
       appBar: AppBar(
         title: Text('Ecran N°2'),
