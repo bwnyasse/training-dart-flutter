@@ -18,6 +18,8 @@ L'objectif est de rapidement comprendre l'utilisation de `dart` pour construire 
 
 Ci-dessous, des actions possibles pour tester le code implémenté : 
 
+        $ dart pub global activate webdev
+        
         $ cd example_io && dart bin/main.dart 
 
         $ cd example_html && webdev serve
