@@ -8,7 +8,10 @@ import 'package:flutter/material.dart';
 class ListItem extends StatefulWidget {
   final int index;
   final GestureTapCallback onTapCallback;
-  ListItem({this.index,this.onTapCallback}) {
+  ListItem({
+    required this.index,
+    required this.onTapCallback,
+  }) {
     print('creating list item $index');
   }
 
