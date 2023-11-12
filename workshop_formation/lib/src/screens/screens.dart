@@ -43,7 +43,7 @@ class _Screen1State extends State<Screen1> {
     //TODO : Valoriser apiService
     final apiService = null;
     MoviesResponse response = apiService.loadMovies();
-    movies = response.movies;
+    movies = response.movies!;
   }
 
   @override
@@ -60,8 +60,8 @@ class _Screen1State extends State<Screen1> {
         itemCount: movies.length,
         itemBuilder: (BuildContext context, int index) {
           Movie movie = movies[index];
-          String originalTitle = movie.originalTitle;
-          String releaseDate = movie.releaseDate;
+          String originalTitle = movie.originalTitle!;
+          String releaseDate = movie.releaseDate!;
           return ListItem(
             data: "$originalTitle - Date : $releaseDate",
             onTapCallback: () {
