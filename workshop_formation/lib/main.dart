@@ -64,7 +64,7 @@ class Screen1 extends StatelessWidget {
 class Screen2 extends StatelessWidget {
   final ScreenArguments args;
 
-  const Screen2({Key key, this.args}) : super(key: key);
+  const Screen2({super.key, required this.args});
 
   @override
   Widget build(BuildContext context) {
