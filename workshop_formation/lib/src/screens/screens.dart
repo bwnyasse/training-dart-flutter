@@ -38,41 +38,14 @@ class _Screen1State extends State<Screen1> {
     super.initState();
     _loadMovies();
   }
-
+ 
   _loadMovies() async {
     // RESOLUTION : Charger les films à afficher depuis l'API MoviesDB
     final apiService = context.read<ApiService>();
     MoviesResponse response = await apiService.loadMovies();
     setState(() {
-      movies = response.movies;
+      movies = response.movies!;
     });
-  }
-
-  // Drawer is a ListView with entries
-  Widget _buildDrawer(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        children: <Widget>[
-          DrawerHeader(
-              child: Container(
-            child: Image.asset(
-              "assets/workshop-image.png",
-              fit: BoxFit.cover,
-            ),
-          )),
-          const ListTile(
-            leading: const Icon(Icons.assessment),
-            title: const Text('Example Menu 1'),
-            selected: true,
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Example Menu 2'),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
@@ -80,17 +53,20 @@ class _Screen1State extends State<Screen1> {
     AppLocalizations localizations = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.getValue(LocaleKey.screen1Title)),
+        title: Text(localizations.getValue(LocaleKey.screen1Title)!),
       ),
-      drawer: _buildDrawer(context),
+      
+      // TODO: Afficher le drawer
+      // drawer: VOTRE_WIDGET
+
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
         itemCount: movies.length,
         itemBuilder: (BuildContext context, int index) {
           Movie movie = movies[index];
-          String originalTitle = movie.originalTitle;
-          String releaseDate = movie.releaseDate;
+          String originalTitle = movie.originalTitle!;
+          String releaseDate = movie.releaseDate!;
           return ListItem(
             imgUrl: movie.posterPath == null
                 ? 'https://via.placeholder.com/300'
@@ -118,10 +94,10 @@ class Screen2 extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context);
     //RESOLUTION: Comment récuperer l'argument dans l'écran ?
-    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+    final ScreenArguments args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.getValue(LocaleKey.screen2Title)),
+        title: Text(localizations.getValue(LocaleKey.screen2Title)!),
       ),
       body: Center(
         child: Column(
