@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:workshop_formation/src/i18n/i18n.dart';
 
 import 'package:workshop_formation/src/models/models.dart';
@@ -39,13 +39,13 @@ class _Screen1State extends State<Screen1> {
     super.initState();
     _loadMovies();
   }
-
+ 
   _loadMovies() async {
     // RESOLUTION : Charger les films à afficher depuis l'API MoviesDB
     final apiService = context.read<ApiService>();
     MoviesResponse response = await apiService.loadMovies();
     setState(() {
-      movies = response.movies;
+      movies = response.movies!;
     });
   }
 
@@ -82,7 +82,8 @@ class _Screen1State extends State<Screen1> {
     AppLocalizations localizations = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.getValue(LocaleKey.screen1Title)),
+        title: Text(localizations.getValue(LocaleKey.screen1Title)!),
+
         // RESOLUTION: Utilisation du plugin share
         actions: <Widget>[
           IconButton(
@@ -92,21 +93,24 @@ class _Screen1State extends State<Screen1> {
             },
           )
         ],
+
       ),
+      
       // RESOLUTION: Afficher le drawer
-      drawer: _buildDrawer(context),
+       drawer: _buildDrawer(context),
+
       //RESOLUTION: Remplacer le body par une liste simple en conservant la navigation
       body: ListView.builder(
         padding: EdgeInsets.all(8.0),
         itemCount: movies.length,
         itemBuilder: (BuildContext context, int index) {
           Movie movie = movies[index];
-          String originalTitle = movie.originalTitle;
-          String releaseDate = movie.releaseDate;
+          String originalTitle = movie.originalTitle!;
+          String releaseDate = movie.releaseDate!;
           return ListItem(
             imgUrl: movie.posterPath == null
                 ? 'https://via.placeholder.com/300'
-                : 'https://image.tmdb.org/t/p/w185/${movie.posterPath}',
+                : 'http://image.tmdb.org/t/p/w185/${movie.posterPath}',
             data: "$originalTitle - Date : $releaseDate",
             onTapCallback: () {
               Navigator.pushNamed(
@@ -130,10 +134,10 @@ class Screen2 extends StatelessWidget {
   Widget build(BuildContext context) {
     AppLocalizations localizations = AppLocalizations.of(context);
     //RESOLUTION: Comment récuperer l'argument dans l'écran ?
-    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+    final ScreenArguments args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.getValue(LocaleKey.screen2Title)),
+        title: Text(localizations.getValue(LocaleKey.screen2Title)!),
       ),
       body: Center(
         child: Column(
