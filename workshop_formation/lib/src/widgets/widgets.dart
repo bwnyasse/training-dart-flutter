@@ -9,7 +9,11 @@ class ListItem extends StatefulWidget {
   final String imgUrl;
   final String data;
   final GestureTapCallback onTapCallback;
-  ListItem({this.imgUrl, this.data, this.onTapCallback}) {
+  ListItem({
+    required this.imgUrl,
+    required this.data,
+    required this.onTapCallback,
+  }) {
     print('creating list item $data');
   }
 
