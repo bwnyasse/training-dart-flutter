@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               new CircularPercentIndicator(
-                radius: 200.0,
+                radius: 100.0,
                 lineWidth: 10.0,
                 percent: _percent,
                 center: new Text(_batteryLevelMsg),
