@@ -23,7 +23,7 @@ class AspectRatioLayout extends StatelessWidget {
 class AspectRatioWidget extends StatelessWidget {
   final String ratio;
 
-  AspectRatioWidget({@required this.ratio});
+  AspectRatioWidget({required this.ratio});
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ class MenuWidget extends StatefulWidget {
   final int selectedIndex;
   final Function(int selectedIndex) onTapped;
 
-  MenuWidget({@required this.onTapped, this.selectedIndex});
+  MenuWidget({required this.onTapped, required this.selectedIndex});
 
   @override
   _MenuWidgetState createState() => _MenuWidgetState();

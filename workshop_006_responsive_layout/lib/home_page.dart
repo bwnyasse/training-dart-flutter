@@ -62,8 +62,8 @@ class LabelWidget extends StatelessWidget {
   final bool navigate;
 
   LabelWidget({
-    @required this.label,
-    this.widget,
+    required this.label,
+    required this.widget,
     this.navigate = true,
   });
 
@@ -73,10 +73,13 @@ class LabelWidget extends StatelessWidget {
       children: [
         Expanded(
           child: ElevatedButton(
-            //color: my_colors.darkGreen,
-            /*shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),*/
+            style: ElevatedButton.styleFrom(
+              backgroundColor: my_colors.darkGreen, // Background color
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              padding: EdgeInsets.all(10.0),
+            ),
             onPressed: () {
               if (navigate) {
                 Navigator.of(context).push(

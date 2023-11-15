@@ -44,7 +44,7 @@ class FractionallySizedBoxLayout extends StatelessWidget {
 
 class FractionallySizedWidget extends StatelessWidget {
   final double widthFactor;
-  FractionallySizedWidget({@required this.widthFactor});
+  FractionallySizedWidget({required this.widthFactor});
 
   @override
   Widget build(BuildContext context) {

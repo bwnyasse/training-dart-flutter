@@ -4,7 +4,7 @@ import 'package:workshop_006_responsive_layout/demo/widgets/people_view/people_i
 class PeopleList extends StatelessWidget {
   final bool isNotInChatMode;
 
-  PeopleList({this.isNotInChatMode});
+  PeopleList({required this.isNotInChatMode});
 
   @override
   Widget build(BuildContext context) {

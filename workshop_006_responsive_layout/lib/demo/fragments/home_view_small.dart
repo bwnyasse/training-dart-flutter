@@ -146,7 +146,7 @@ class _HomeViewSmallState extends State<HomeViewSmall> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'Copyright © 2020 | Demo',
+                      'Copyright © 2023 | bwnyasse.net',
                       style: TextStyle(
                         color: Colors.white60,
                         fontSize: 14,
