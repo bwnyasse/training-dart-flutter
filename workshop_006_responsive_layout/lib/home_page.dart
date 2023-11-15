@@ -30,8 +30,8 @@ class LabelWidget extends StatelessWidget {
   final bool navigate;
 
   LabelWidget({
-    @required this.label,
-    this.widget,
+    required this.label,
+    required this.widget,
     this.navigate = true,
   });
 
@@ -40,10 +40,13 @@ class LabelWidget extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: RaisedButton(
-            color: my_colors.darkGreen,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: my_colors.darkGreen, // Background color
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              padding: EdgeInsets.all(10.0),
             ),
             onPressed: () {
               if (navigate) {
