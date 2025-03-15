@@ -21,6 +21,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     on<MapCreated>(_onMapCreated);
     on<SelectLocation>(_onSelectLocation);
     on<CameraPositionChanged>(_onCameraPositionChanged);
+    on<ClearSelection>(_onClearSelection);
   }
 
   Future<void> _onLoadLocations(
@@ -65,6 +66,10 @@ class MapBloc extends Bloc<MapEvent, MapState> {
   void _onCameraPositionChanged(
       CameraPositionChanged event, Emitter<MapState> emit) {
     emit(state.copyWith(cameraPosition: event.position));
+  }
+
+  void _onClearSelection(ClearSelection event, Emitter<MapState> emit) {
+    emit(state.copyWith(clearSelectedLocation: true));
   }
 
   Set<Marker> _createMarkers(List<LocationModel> locations) {

@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:travel_explorer/modules/map/bloc/map_bloc.dart';
 import 'package:travel_explorer/modules/map/bloc/map_event.dart';
 import 'package:travel_explorer/modules/map/bloc/map_state.dart';
+import 'package:travel_explorer/modules/map/widgets/location_details_content.dart';
 import 'package:travel_explorer/shared/models/location_model.dart';
 
 class MapPage extends StatefulWidget {
@@ -19,10 +20,9 @@ class _MapPageState extends State<MapPage> {
   @override
   void initState() {
     super.initState();
-    _mapBloc =  BlocProvider.of<MapBloc>(context);
+    _mapBloc = BlocProvider.of<MapBloc>(context);
     _mapBloc.add(LoadLocations());
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,25 +47,85 @@ class _MapPageState extends State<MapPage> {
 
             return Column(
               children: [
+                // Main content area
                 Expanded(
-                  flex: 3,
-                  child: GoogleMap(
-                    initialCameraPosition: state.cameraPosition!,
-                    markers: state.markers,
-                    myLocationEnabled: true,
-                    myLocationButtonEnabled: true,
-                    zoomControlsEnabled: true,
-                    mapType: MapType.normal,
-                    onMapCreated: (controller) {
-                      _mapBloc.add(MapCreated(controller));
-                    },
-                    onCameraMove: (position) {
-                      _mapBloc.add(CameraPositionChanged(position));
-                    },
+                  child: Row(
+                    children: [
+                      // Map view
+                      Expanded(
+                        flex: 3, // Takes more space
+                        child: GoogleMap(
+                          initialCameraPosition: state.cameraPosition!,
+                          markers: state.markers,
+                          myLocationEnabled: true,
+                          myLocationButtonEnabled: true,
+                          zoomControlsEnabled: true,
+                          mapType: MapType.normal,
+                          onMapCreated: (controller) {
+                            _mapBloc.add(MapCreated(controller));
+                          },
+                          onCameraMove: (position) {
+                            _mapBloc.add(CameraPositionChanged(position));
+                          },
+                        ),
+                      ),
+
+                      // Location details when selected
+                      if (state.selectedLocation != null)
+                        Expanded(
+                          flex: 2, // Takes less space than map
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border(
+                                left: BorderSide(
+                                  color: Theme.of(context).dividerColor,
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                // Close button
+                                Align(
+                                  alignment: Alignment.topRight,
+                                  child: IconButton(
+                                    icon: const Icon(Icons.close),
+                                    onPressed: () {
+                                      _mapBloc.add(ClearSelection());
+                                    },
+                                  ),
+                                ),
+
+                                // Location details content
+                                Expanded(
+                                  child: SingleChildScrollView(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: LocationDetailsContent(
+                                      location: state.selectedLocation!,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
-                Expanded(
-                  flex: 1,
+
+                // Bottom locations list
+                Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 10,
+                        offset: const Offset(0, -2),
+                      ),
+                    ],
+                  ),
                   child: LocationsList(
                     bloc: _mapBloc,
                     locations: state.locations,

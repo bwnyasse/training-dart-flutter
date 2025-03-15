@@ -35,3 +35,5 @@ class CameraPositionChanged extends MapEvent {
   @override
   List<Object?> get props => [position];
 }
+
+class ClearSelection extends MapEvent {}

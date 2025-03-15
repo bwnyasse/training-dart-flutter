@@ -11,7 +11,7 @@ class MapState extends Equatable {
   final CameraPosition? cameraPosition;
   final String? errorMessage;
   final LocationModel? selectedLocation;
-  
+
   const MapState({
     this.status = MapStatus.initial,
     this.locations = const [],
@@ -20,7 +20,7 @@ class MapState extends Equatable {
     this.errorMessage,
     this.selectedLocation,
   });
-  
+
   MapState copyWith({
     MapStatus? status,
     List<LocationModel>? locations,
@@ -28,6 +28,7 @@ class MapState extends Equatable {
     CameraPosition? cameraPosition,
     String? errorMessage,
     LocationModel? selectedLocation,
+    bool clearSelectedLocation = false,
   }) {
     return MapState(
       status: status ?? this.status,
@@ -35,17 +36,19 @@ class MapState extends Equatable {
       markers: markers ?? this.markers,
       cameraPosition: cameraPosition ?? this.cameraPosition,
       errorMessage: errorMessage ?? this.errorMessage,
-      selectedLocation: selectedLocation ?? this.selectedLocation,
+      selectedLocation: clearSelectedLocation
+          ? null
+          : (selectedLocation ?? this.selectedLocation),
     );
   }
-  
+
   @override
   List<Object?> get props => [
-    status, 
-    locations, 
-    markers, 
-    cameraPosition, 
-    errorMessage,
-    selectedLocation
-  ];
+        status,
+        locations,
+        markers,
+        cameraPosition,
+        errorMessage,
+        selectedLocation
+      ];
 }
