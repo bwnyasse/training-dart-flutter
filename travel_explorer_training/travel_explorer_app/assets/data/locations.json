@@ -1,0 +1,42 @@
+[
+    {
+      "id": "1",
+      "name": "Eiffel Tower",
+      "latitude": 48.8584,
+      "longitude": 2.2945,
+      "type": "landmark",
+      "description": "Famous metal tower in Paris",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/800px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg",
+      "rating": 4.8
+    },
+    {
+      "id": "2",
+      "name": "Louvre Museum",
+      "latitude": 48.8606,
+      "longitude": 2.3376,
+      "type": "attraction",
+      "description": "World's largest art museum in Paris",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Louvre_Museum_Wikimedia_Commons.jpg/800px-Louvre_Museum_Wikimedia_Commons.jpg",
+      "rating": 4.7
+    },
+    {
+      "id": "3",
+      "name": "Le Jules Verne",
+      "latitude": 48.8583,
+      "longitude": 2.2944,
+      "type": "restaurant",
+      "description": "Upscale restaurant in the Eiffel Tower",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Le_Jules_Verne.jpg/800px-Le_Jules_Verne.jpg",
+      "rating": 4.5
+    },
+    {
+      "id": "4",
+      "name": "Hotel Plaza Athenee",
+      "latitude": 48.8652,
+      "longitude": 2.3016,
+      "type": "hotel",
+      "description": "Luxury hotel in central Paris",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/H%C3%B4tel_Plaza_Ath%C3%A9n%C3%A9e_Paris.jpg/800px-H%C3%B4tel_Plaza_Ath%C3%A9n%C3%A9e_Paris.jpg",
+      "rating": 4.9
+    }
+]
