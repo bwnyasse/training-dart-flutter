@@ -1,10 +1,10 @@
 // lib/modules/map/widgetslocation_details_content.dart
 import 'package:flutter/material.dart';
 import 'package:travel_explorer/shared/models/location_model.dart';
-import 'package:travel_explorer/shared/widgets/custom_painters/circular_rating_painter.dart';
 import 'package:travel_explorer/shared/widgets/decorations/fancy_card.dart';
 import 'package:travel_explorer/shared/widgets/glass_container.dart';
 import 'package:travel_explorer/shared/widgets/rotated_label.dart';
+import 'package:travel_rating/travel_rating.dart';
 
 class LocationDetailsContent extends StatelessWidget {
   final LocationModel location;
@@ -20,6 +20,11 @@ class LocationDetailsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RatingModel locationRating = RatingModel(
+      value: location.rating ?? 0.0,
+      totalRatings: 42, // Example value
+    );
+
     return Stack(
       children: [
         FancyCard(
@@ -56,13 +61,17 @@ class LocationDetailsContent extends StatelessWidget {
                         ),
                       ),
                     ),
-                    
+
                   // Category badge
                   Positioned(
                     left: 0,
                     top: 20,
                     child: VerticalLabel(
-                      text: location.type.toString().split('.').last.toUpperCase(),
+                      text: location.type
+                          .toString()
+                          .split('.')
+                          .last
+                          .toUpperCase(),
                       backgroundColor: _getColorForType(location.type),
                       padding: 12,
                       style: const TextStyle(
@@ -71,7 +80,7 @@ class LocationDetailsContent extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
+
                   // Glass effect info bar at bottom of image
                   Positioned(
                     bottom: 0,
@@ -104,28 +113,47 @@ class LocationDetailsContent extends StatelessWidget {
                             ),
                           ),
                           if (location.rating != null)
-                            CircularRatingIndicator(
-                              rating: location.rating!,
-                              size: 50.0,
-                              strokeWidth: 3.0,
-                              foregroundColor: Colors.amber,
-                              backgroundColor: Colors.white54,
-                              child: Text(
-                                location.rating!.toString(),
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14.0,
-                                ),
+                            CircularRatingIndicator.fromModel(
+                              model: locationRating,
+                              size: 80.0,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    RatingUtils.formatRating(
+                                        locationRating.value),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  Text(
+                                    RatingUtils.getRatingDescription(
+                                        locationRating.value),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
+// Using StarRatingInput
+                          StarRatingInput.fromModel(
+                            model: locationRating,
+                            onRatingChanged: (value) {
+                              // Handle rating change
+                              print('New rating: $value');
+                            },
+                          ),
                         ],
                       ),
                     ),
                   ),
                 ],
               ),
-              
+
               // Details section
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -141,7 +169,7 @@ class LocationDetailsContent extends StatelessWidget {
                       ),
                       const SizedBox(height: 16.0),
                     ],
-                    
+
                     // Action buttons
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -173,7 +201,7 @@ class LocationDetailsContent extends StatelessWidget {
             ],
           ),
         ),
-        
+
         // NEW badge if applicable
         if (isNew)
           const Positioned(
@@ -184,7 +212,7 @@ class LocationDetailsContent extends StatelessWidget {
       ],
     );
   }
-  
+
   Widget _buildActionButton({
     required IconData icon,
     required String label,
@@ -208,7 +236,7 @@ class LocationDetailsContent extends StatelessWidget {
       ),
     );
   }
-  
+
   Color _getColorForType(LocationType type) {
     switch (type) {
       case LocationType.restaurant:
@@ -223,7 +251,7 @@ class LocationDetailsContent extends StatelessWidget {
         return Colors.orangeAccent;
     }
   }
-  
+
   IconData _getIconForType(LocationType type) {
     switch (type) {
       case LocationType.restaurant:
@@ -238,7 +266,7 @@ class LocationDetailsContent extends StatelessWidget {
         return Icons.place;
     }
   }
-  
+
   List<Color> _getGradientForType(LocationType type) {
     final baseColor = _getColorForType(type);
     return [

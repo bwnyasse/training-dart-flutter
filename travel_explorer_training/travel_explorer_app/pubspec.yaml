@@ -11,6 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # Local package reference
+  travel_rating:
+    path: ./../packages/travel_rating
 
   cupertino_icons: ^1.0.8
   flutter_modular: ^6.3.4
