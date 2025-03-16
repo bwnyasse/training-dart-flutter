@@ -1,0 +1,1 @@
+{"hosting":{"source":".","ignore":["firebase.json","**/.*","**/node_modules/**"],"frameworksBackend":{"region":"us-central1"}},"flutter":{"platforms":{"dart":{"lib/firebase_options.dart":{"projectId":"learning-box-369917","configurations":{"web":"1:553140087820:web:c6db42b98856c306d51229"}}}}}}

@@ -1,12 +1,16 @@
-// lib/modules/map/widgetslocation_details_content.dart
+// lib/modules/map/widgets/location_details_content.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_explorer/modules/genai/bloc/genai_bloc.dart';
+import 'package:travel_explorer/modules/genai/bloc/genai_event.dart';
+import 'package:travel_explorer/modules/genai/bloc/genai_state.dart';
 import 'package:travel_explorer/shared/models/location_model.dart';
 import 'package:travel_explorer/shared/widgets/decorations/fancy_card.dart';
 import 'package:travel_explorer/shared/widgets/glass_container.dart';
 import 'package:travel_explorer/shared/widgets/rotated_label.dart';
 import 'package:travel_rating/travel_rating.dart';
 
-class LocationDetailsContent extends StatelessWidget {
+class LocationDetailsContent extends StatefulWidget {
   final LocationModel location;
   final VoidCallback? onAddToTrip;
   final bool isNew;
@@ -19,197 +23,293 @@ class LocationDetailsContent extends StatelessWidget {
   });
 
   @override
+  State<LocationDetailsContent> createState() => _LocationDetailsContentState();
+}
+
+class _LocationDetailsContentState extends State<LocationDetailsContent> {
+  late final GenAIBloc _genAIBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _genAIBloc = BlocProvider.of<GenAIBloc>(context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     RatingModel locationRating = RatingModel(
-      value: location.rating ?? 0.0,
+      value: widget.location.rating ?? 0.0,
       totalRatings: 42, // Example value
     );
 
-    return Stack(
-      children: [
-        FancyCard(
-          gradientColors: _getGradientForType(location.type),
-          padding: EdgeInsets.zero,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Image section with glass overlay for details
-              Stack(
-                children: [
-                  // Location image
-                  if (location.imageUrl != null)
-                    ClipRRect(
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(16.0),
+    return BlocProvider.value(
+      value: _genAIBloc,
+      child: Stack(
+        children: [
+          FancyCard(
+            gradientColors: _getGradientForType(widget.location.type),
+            padding: EdgeInsets.zero,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // Image section with glass overlay for details
+                Stack(
+                  children: [
+                    // Location image
+                    if (widget.location.imageUrl != null)
+                      ClipRRect(
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(16.0),
+                        ),
+                        child: Image.network(
+                          widget.location.imageUrl!,
+                          height: 450,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    else
+                      Container(
+                        height: 180,
+                        color: _getColorForType(widget.location.type)
+                            .withOpacity(0.3),
+                        child: Center(
+                          child: Icon(
+                            _getIconForType(widget.location.type),
+                            size: 60,
+                            color: _getColorForType(widget.location.type),
+                          ),
+                        ),
                       ),
-                      child: Image.network(
-                        location.imageUrl!,
-                        height: 450,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  else
-                    Container(
-                      height: 180,
-                      color: _getColorForType(location.type).withOpacity(0.3),
-                      child: Center(
-                        child: Icon(
-                          _getIconForType(location.type),
-                          size: 60,
-                          color: _getColorForType(location.type),
+
+                    // Category badge
+                    Positioned(
+                      left: 0,
+                      top: 20,
+                      child: VerticalLabel(
+                        text: widget.location.type
+                            .toString()
+                            .split('.')
+                            .last
+                            .toUpperCase(),
+                        backgroundColor: _getColorForType(widget.location.type),
+                        padding: 12,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
 
-                  // Category badge
-                  Positioned(
-                    left: 0,
-                    top: 20,
-                    child: VerticalLabel(
-                      text: location.type
-                          .toString()
-                          .split('.')
-                          .last
-                          .toUpperCase(),
-                      backgroundColor: _getColorForType(location.type),
-                      padding: 12,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    // Glass effect info bar at bottom of image
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: GlassContainer(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 12.0,
+                        ),
+                        borderRadius: 0,
+                        blurAmount: 3,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                widget.location.name,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black45,
+                                      blurRadius: 2,
+                                      offset: Offset(1, 1),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            if (widget.location.rating != null)
+                              CircularRatingIndicator.fromModel(
+                                model: locationRating,
+                                size: 80.0,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      RatingUtils.formatRating(
+                                          locationRating.value),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      RatingUtils.getRatingDescription(
+                                          locationRating.value),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            // Using StarRatingInput
+                            StarRatingInput.fromModel(
+                              model: locationRating,
+                              onRatingChanged: (value) {
+                                // Handle rating change
+                                print('New rating: $value');
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
+                ),
 
-                  // Glass effect info bar at bottom of image
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: GlassContainer(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 12.0,
-                      ),
-                      borderRadius: 0,
-                      blurAmount: 3,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              location.name,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                                shadows: [
-                                  Shadow(
-                                    color: Colors.black45,
-                                    blurRadius: 2,
-                                    offset: Offset(1, 1),
-                                  ),
-                                ],
-                              ),
-                            ),
+                // Details section
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (widget.location.description != null) ...[
+                        Text(
+                          widget.location.description!,
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.9),
                           ),
-                          if (location.rating != null)
-                            CircularRatingIndicator.fromModel(
-                              model: locationRating,
-                              size: 80.0,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
+                        ),
+                        const SizedBox(height: 16.0),
+                      ],
+                      BlocBuilder<GenAIBloc, GenAIState>(
+                        builder: (context, state) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
                                 children: [
-                                  Text(
-                                    RatingUtils.formatRating(
-                                        locationRating.value),
-                                    style: const TextStyle(
-                                      color: Colors.white,
+                                  const Text(
+                                    'AI Travel Insight',
+                                    style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                  Text(
-                                    RatingUtils.getRatingDescription(
-                                        locationRating.value),
-                                    style: const TextStyle(
                                       color: Colors.white,
-                                      fontSize: 10,
                                     ),
                                   ),
+                                  const Spacer(),
+                                  if (state.status != GenAIStatus.loading)
+                                    IconButton(
+                                      icon: const Icon(Icons.psychology,
+                                          color: Colors.white),
+                                      onPressed: () {
+                                        _genAIBloc.add(
+                                          GenerateLocationDescription(
+                                            locationName:
+                                                widget.location.name,
+                                            locationType: widget.location.type
+                                                .toString()
+                                                .split('.')
+                                                .last,
+                                          ),
+                                        );
+                                      },
+                                      tooltip: 'Generate AI description',
+                                    ),
                                 ],
                               ),
-                            ),
-// Using StarRatingInput
-                          StarRatingInput.fromModel(
-                            model: locationRating,
-                            onRatingChanged: (value) {
-                              // Handle rating change
-                              print('New rating: $value');
+                              const SizedBox(height: 8.0),
+                              if (state.status == GenAIStatus.loading)
+                                const Center(
+                                  child: CircularProgressIndicator(),
+                                )
+                              else if (state.status == GenAIStatus.success &&
+                                  state.description != null)
+                                Container(
+                                  padding: const EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black26,
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: Colors.white24),
+                                  ),
+                                  child: Text(
+                                    state.description!,
+                                    style: TextStyle(
+                                      color: Colors.white.withOpacity(0.9),
+                                      fontStyle: FontStyle.italic,
+                                    ),
+                                  ),
+                                )
+                              else if (state.status == GenAIStatus.error)
+                                Text(
+                                  'Error: ${state.errorMessage}',
+                                  style: const TextStyle(
+                                      color: Colors.redAccent),
+                                )
+                              else
+                                Container(
+                                  padding: const EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black12,
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: Colors.white12),
+                                  ),
+                                  child: const Text(
+                                    'Tap the AI icon to generate a travel insight about this location.',
+                                    style: TextStyle(color: Colors.white70),
+                                  ),
+                                ),
+                            ],
+                          );
+                        },
+                      ),
+                      // Action buttons
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _buildActionButton(
+                            icon: Icons.map,
+                            label: 'View on Map',
+                            onPressed: () {
+                              // Already on map for now
+                            },
+                          ),
+                          _buildActionButton(
+                            icon: Icons.add,
+                            label: 'Add to Trip',
+                            onPressed: widget.onAddToTrip,
+                          ),
+                          _buildActionButton(
+                            icon: Icons.favorite_border,
+                            label: 'Favorite',
+                            onPressed: () {
+                              // To be implemented
                             },
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                ],
-              ),
-
-              // Details section
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (location.description != null) ...[
-                      Text(
-                        location.description!,
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.9),
-                        ),
-                      ),
-                      const SizedBox(height: 16.0),
                     ],
-
-                    // Action buttons
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildActionButton(
-                          icon: Icons.map,
-                          label: 'View on Map',
-                          onPressed: () {
-                            // Already on map for now
-                          },
-                        ),
-                        _buildActionButton(
-                          icon: Icons.add,
-                          label: 'Add to Trip',
-                          onPressed: onAddToTrip,
-                        ),
-                        _buildActionButton(
-                          icon: Icons.favorite_border,
-                          label: 'Favorite',
-                          onPressed: () {
-                            // To be implemented
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
 
-        // NEW badge if applicable
-        if (isNew)
-          const Positioned(
-            top: 0,
-            right: 0,
-            child: NewBadge(),
-          ),
-      ],
+          // NEW badge if applicable
+          if (widget.isNew)
+            const Positioned(
+              top: 0,
+              right: 0,
+              child: NewBadge(),
+            ),
+        ],
+      ),
     );
   }
 
