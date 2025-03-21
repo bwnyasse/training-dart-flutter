@@ -13,7 +13,7 @@ class MoviesResponse extends Equatable {
   @JsonKey(name: 'total_pages')
   final int totalPages;
 
-  @JsonKey(nullable: false, name: 'results')
+  @JsonKey( name: 'results')
   final List<Movie> movies;
 
   MoviesResponse({
@@ -50,7 +50,7 @@ class Movie extends Equatable {
   final String title;
 
   @JsonKey(name: 'poster_path')
-  final String posterPath;
+  final String? posterPath;
 
   @JsonKey(name: 'original_language')
   final String originalLanguage;
@@ -62,11 +62,11 @@ class Movie extends Equatable {
 
   final String overview;
 
-  @JsonKey(name: 'gender_ids')
-  final List genreIds = [];
+  @JsonKey(name: 'genre_ids', defaultValue: <int>[])
+  final List<int> genreIds;
 
   @JsonKey(name: 'backdrop_path')
-  final String backdropPath;
+  final String? backdropPath;
 
   final double popularity;
 
@@ -82,12 +82,13 @@ class Movie extends Equatable {
     required this.voteCount,
     required this.voteAverage,
     required this.title,
-    required this.posterPath,
+    this.posterPath,
     required this.originalLanguage,
     required this.originalTitle,
     required this.adult,
     required this.overview,
-    required this.backdropPath,
+    required this.genreIds,
+    this.backdropPath,
     required this.popularity,
     required this.releaseDate,
     required this.favorite,
@@ -96,21 +97,22 @@ class Movie extends Equatable {
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 
   @override
-  List<Object> get props => [
-        this.id,
-        this.video,
-        this.voteCount,
-        this.voteAverage,
-        this.title,
-        this.posterPath,
-        this.originalLanguage,
-        this.originalTitle,
-        this.adult,
-        this.overview,
-        this.backdropPath,
-        this.popularity,
-        this.releaseDate,
-        this.favorite,
+  List<Object?> get props => [
+        id,
+        video,
+        voteCount,
+        voteAverage,
+        title,
+        posterPath,
+        originalLanguage,
+        originalTitle,
+        adult,
+        overview,
+        backdropPath,
+        popularity,
+        releaseDate,
+        favorite,
+        genreIds,
       ];
 
   String get posterPathResolved => posterPath == null

@@ -15,13 +15,13 @@ class ApiService {
 
   ApiService(this.client);
 
-  MoviesResponse loadMockMovies() => MoviesResponse.fromJson(mock.mockJson());
+  MoviesResponse loadMovies2() => MoviesResponse.fromJson(mock.mockJson());
 
   Future<MoviesResponse> loadMovies() async {
     final apiKey = '4205ec1d93b1e3465f636f0956a98c64';
     final api = 'https://api.themoviedb.org/3';
     final urlPath = 'movie/now_playing';
-    final path = '$api/$urlPath?api_key=$apiKey&language=en-US';
+    final path = '$api/$urlPath?api_key=$apiKey&language=fr-FR';
 
     // appel asynchrone
     final response = await client.get(Uri.parse(path));

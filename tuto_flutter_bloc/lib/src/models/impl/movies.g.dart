@@ -8,9 +8,9 @@ part of 'movies.dart';
 
 MoviesResponse _$MoviesResponseFromJson(Map<String, dynamic> json) =>
     MoviesResponse(
-      page: json['page'] as int,
-      totalPages: json['total_pages'] as int,
-      totalResults: json['total_results'] as int,
+      page: (json['page'] as num).toInt(),
+      totalPages: (json['total_pages'] as num).toInt(),
+      totalResults: (json['total_results'] as num).toInt(),
       movies: (json['results'] as List<dynamic>)
           .map((e) => Movie.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -25,17 +25,21 @@ Map<String, dynamic> _$MoviesResponseToJson(MoviesResponse instance) =>
     };
 
 Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       video: json['video'] as bool,
-      voteCount: json['vote_count'] as int,
+      voteCount: (json['vote_count'] as num).toInt(),
       voteAverage: (json['vote_average'] as num).toDouble(),
       title: json['title'] as String,
-      posterPath: json['poster_path'] as String,
+      posterPath: json['poster_path'] as String?,
       originalLanguage: json['original_language'] as String,
       originalTitle: json['original_title'] as String,
       adult: json['adult'] as bool,
       overview: json['overview'] as String,
-      backdropPath: json['backdrop_path'] as String,
+      genreIds: (json['genre_ids'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList() ??
+          [],
+      backdropPath: json['backdrop_path'] as String?,
       popularity: (json['popularity'] as num).toDouble(),
       releaseDate: json['release_date'] as String,
       favorite: json['favorite'] as bool? ?? false,
@@ -52,6 +56,7 @@ Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
       'original_title': instance.originalTitle,
       'adult': instance.adult,
       'overview': instance.overview,
+      'genre_ids': instance.genreIds,
       'backdrop_path': instance.backdropPath,
       'popularity': instance.popularity,
       'release_date': instance.releaseDate,
